@@ -56,6 +56,11 @@ the directory of the stable readme.txt, so in this case, `/tags/4.3/screenshot-1
 - feature added: dynamic changing text variables
 - feature added: add category
 
+= 1.2.0 =
+- feature added: add, delete text variables
+- added default text and variables
+- Back to Top Link added
+
 
 
 `<?php code(); // goes in backticks ?>`

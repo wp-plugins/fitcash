@@ -3,7 +3,7 @@
 Plugin Name: FitCash 
 Plugin URI: http://jonbensonfitness.com/wp-plugin
 Description: Import posts/articles from Jon Benson Fitness&copy; Host Blog to your blog via last rss feed. WP Cron settings for automatical import in regular intervals.
-Version: 1.1.1
+Version: 1.2.0
 Author: John Benson
 Author URI: http://jonbensonfitness.com
 License: GPL2
@@ -17,7 +17,7 @@ define('FITPDIR', WP_PLUGIN_DIR . '/' . str_replace(basename( __FILE__),"",plugi
 
 // relative path to WP_PLUGIN_DIR where the translation files will sit:
 $plugin_path = plugin_basename( dirname( __FILE__ ) .'/lang' );
-load_plugin_textdomain( 'jbf_import_posts', '', $plugin_path );
+load_plugin_textdomain( 'fitcash', '', $plugin_path );
 
 include_once( dirname(__FILE__) . '/fitcash-lastRSS.php');
 include_once( dirname(__FILE__) . '/fitcash-functions.php');
@@ -26,6 +26,7 @@ include_once( dirname(__FILE__) . '/fitcash-option-page.php');
 register_activation_hook( __FILE__, 'fitcash_plugin_activation');   
 register_deactivation_hook( __FILE__, 'fitcash_plugin_deactivation'); 
 
+add_action( 'admin_init', 'fitcash_init_method');
 add_action( 'admin_menu', 'fitcash_plugin_add_option_page');
 add_action( 'admin_head', 'fitcash_plugin_load_header_tags');
 add_filter( 'cron_schedules', 'fitcash_more_reccurences');
@@ -105,6 +106,23 @@ function fitcash_plugin_load_header_tags()
 }
 
 
+
+////////////////////////////////////////////////////////////////////////////////
+// plugin init method
+////////////////////////////////////////////////////////////////////////////////
+function fitcash_init_method()
+{
+  if ( get_magic_quotes_gpc() ) 
+  {
+    $_POST      = array_map( 'stripslashes_deep', $_POST );
+    $_GET       = array_map( 'stripslashes_deep', $_GET );
+    $_COOKIE    = array_map( 'stripslashes_deep', $_COOKIE );
+    $_REQUEST   = array_map( 'stripslashes_deep', $_REQUEST );
+  }
+
+  return;
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 // plugin options functions
 ////////////////////////////////////////////////////////////////////////////////
@@ -146,10 +164,10 @@ function fitcash_migrate_old_options()
        '2' => 'jv_profit_center_id',
        '3' => 'import_from_feed365Online_under_this_category',
        '4' => 'disclaimer_prefix_for_fit365_online',
-       '11' => 'fit365online_number_of_article_for_first_import',
-       '12' => 'fit365online_number_of_article_for_subsequent_import',
-       '13' => 'fit365online_import_schedule',
-       '14' => 'fit365online_import_as_option'
+       '12' => 'fit365online_number_of_article_for_first_import',
+       '13' => 'fit365online_number_of_article_for_subsequent_import',
+       '14' => 'fit365online_import_schedule',
+       '15' => 'fit365online_import_as_option'
        );
 
   $new_fields = array(
@@ -163,11 +181,12 @@ function fitcash_migrate_old_options()
        '7' => 'fitcash_spinning_footer_text',
        '8' => 'fitcash_spinning_last_number',
        '9' => 'fitcash_text_vars',
-       '10' => 'fitcash_text_variable',
-       '11' => 'fitcash_count_post_first_import',
-       '12' => 'fitcash_count_post_next_imports',
-       '13' => 'fitcash_import_schedule',
-       '14' => 'fitcash_publish_option'
+       '10' => 'fitcash_num_text_vars',
+       '11' => 'fitcash_text_variable',
+       '12' => 'fitcash_count_post_first_import',
+       '13' => 'fitcash_count_post_next_imports',
+       '14' => 'fitcash_import_schedule',
+       '15' => 'fitcash_publish_option'
        );
 
   foreach($old_fields as $index=>$field) 
@@ -207,16 +226,72 @@ function fitcash_set_option_defaults()
        'fitcash_import_cats'              => array($importfit_cat),
        'fitcash_post_header_text'         => '[ Note: This article was written by fitness and nutrition author Jon Benson. I have his permission to share it with you. ]',
        'fitcash_post_footer_text'         => '[ Thank you for reading. If you are intrested in more informations please contact us or subscribe to our blog feed and newsletter. ]',
-       'fitcash_spinning_header_text' => array(),
-       'fitcash_spinning_footer_text' => array(),
-       'fitcash_spinning_last_number' => 0,
-       'fitcash_text_vars'            => 'off',
-       'fitcash_text_variable'        => array(),
+       'fitcash_spinning_header_text'     => array(),
+       'fitcash_spinning_footer_text'     => array(),
+       'fitcash_spinning_last_number'     => 0,
+       'fitcash_text_vars'                => 'on',
+       'fitcash_num_text_vars'            => 26,
+       'fitcash_text_variable'            => array(),
        'fitcash_count_post_first_import'  => 1,
        'fitcash_count_post_next_imports'  => 1,
-       'fitcash_import_schedule'          => 'Daily',
+       'fitcash_import_schedule'          => 'daily',
        'fitcash_publish_option'           => 'publish'
         );
+
+  //  set default header and footer vars
+  $fitcash_def_header = array(
+     '[ The following article was {var1} by Jon Benson, fitness and fat-loss expert. I {var2} you&#039;ll {var3} it! ]',
+     '[ Want to read a {var4} fitness article? Then check this one out... it was sent to me by Jon Benson. I have his {var5} to {var6} you. Enjoy! ]',
+     '[ Jon Benson writes some of the {var7} fitness stuff on the Internet, so I know you&#039;ll {var3} this recent article from him... ]',
+     '[ Sometimes I read an article so great I have to {var6} all my readers. This recent post by fitness expert Jon Benson is one of those articles. See if it doesn&#039;t help you with your {var10} goals. Thanks! ]',
+     '[ You learn something new every day, right? Well, today I learned something {var11} from fitness author Jon Benson. He has given me {var17} to {var6} you. Let me know what you think by commenting below! ]',
+     '[ I love reading {var14} fitness articles... and this one by Jon Benson fits the bill. You really {var15} check this out... enjoy! }',
+     '[ I enjoy role models and fitness inspirations like Jon Benson (and many others)... so when Jon {var16} this article to me and gave me {var17} to pass it along to you, I jumped on the chance. Read this {var18} while it&#039;s fresh on your mind! ]',
+     '[ There is a {var19} of bogus weight loss and fitness information out there. That&#039;s why reading Jon Benson&#039;s articles makes sense... and his newest article (which I have his {var5} to {var6} you) really rocked my world. Check it out... ]',
+     '[ This article by Jon Benson cuts through the {var22} that is floating about in cyberspace when it comes to weight loss and fitness. I {var23} you give it a read! It&#039;s worth 5 minutes... trust me! ]',
+     '[ Weight loss and body transformation is never easy, but Jon Benson is an expert at making it EASIER. This is {var24} killer article on how to get it done... faster and easier... enjoy! ]'
+     );
+
+  $fitcash_def_footer = array(
+     '[ I hope you {var25} today&#039;s guest editorial by {var26} DO check out his latest book(s) using the links found in this blog or the banner below. Highly recommended! ]',
+     '[ Learn more about Jon and his methods by clicking on the links and/or banner in the article above {var27}... and get yourself started on a {var28} path to body transformation! ]',
+     '[ Like what you read today? Then {var29} Jon Benson&#039;s latest by clicking on the links or banners in this article {var27}... ]',
+     '[ More from Jon Benson in upcoming blogs... but you can get more info and some freebies by {var8} Jon&#039;s pages found in the article above or the banner below. Thanks! ]',
+     '[ Want to {var9} even more fat-loss and body transformation info? Then {var13} Jon&#039;s page by clicking on the links in the article above (or in the banner below) to get started today on reshaping YOUR body! ]'
+     );
+
+  $fitcash_def_vars = array(
+     0 => array( 'name' => 'var1', 'values' => '{written},{sent to me},{given to my readers}', 'value' => array() ),
+     1 => array( 'name' => 'var2', 'values' => '{trust},{hope},{bet}', 'value' => array() ),
+     2 => array( 'name' => 'var3', 'values' => '{enjoy},{benefit from},{love}', 'value' => array() ),
+     3 => array( 'name' => 'var4', 'values' => '{great},{killer},{eye-opening}', 'value' => array() ),
+     4 => array( 'name' => 'var5', 'values' => '{permission},{okay},{thumbs-up}', 'value' => array() ),
+     5 => array( 'name' => 'var6', 'values' => '{share it with},{pass it along to},{forward it to}', 'value' => array() ),
+     6 => array( 'name' => 'var7', 'values' => '{coolest},{most provocative},{most entertaining}', 'value' => array() ),
+     7 => array( 'name' => 'var8', 'values' => '{visiting},{going to},{taking action now and checking out}', 'value' => array() ),
+     8 => array( 'name' => 'var9', 'values' => '{learn},{discover},{dive into}', 'value' => array() ),
+     9 => array( 'name' => 'var10', 'values' => '{fitness},{weight loss},{motivational}', 'value' => array() ),
+     10 => array( 'name' => 'var11', 'values' => '{new},{wonderful},{exciting}', 'value' => array() ),
+     11 => array( 'name' => 'var12', 'values' => '{permission},{the okay},{the thumbs-up}', 'value' => array() ),
+     12 => array( 'name' => 'var13', 'values' => '{shoot over},{hop over},{visit}', 'value' => array() ),
+     13 => array( 'name' => 'var14', 'values' => '{provocative},{fresh},{cutting-edge}', 'value' => array() ),
+     14 => array( 'name' => 'var15', 'values' => '{must},{need to},{should}', 'value' => array() ),
+     15 => array( 'name' => 'var16', 'values' => '{sent},{forwarded},{shot over}', 'value' => array() ),
+     16 => array( 'name' => 'var17', 'values' => '{now},{asap},{today}', 'value' => array() ),
+     17 => array( 'name' => 'var18', 'values' => '{lot},{ton},{plethora}', 'value' => array() ),
+     18 => array( 'name' => 'var19', 'values' => '{clutter},{nonsense},{junk}', 'value' => array() ),
+     19 => array( 'name' => 'var20', 'values' => '{highly suggest},{totally recommend},{practically insist}', 'value' => array() ),
+     20 => array( 'name' => 'var21', 'values' => '{yet another},{another in his long-line of},{another winning, }', 'value' => array() ),
+     21 => array( 'name' => 'var22', 'values' => '{enjoyed},{got a lot out of},{got super-motivated after reading}', 'value' => array() ),
+     22 => array( 'name' => 'var23', 'values' => '{Jon Benson.},{fitness guru Jon Benson.},{fat-loss expert Jon Benson.}', 'value' => array() ),
+     23 => array( 'name' => 'var24', 'values' => '{today},{immediately},{now}', 'value' => array() ),
+     24 => array( 'name' => 'var25', 'values' => '{solid},{fast-track},{proven}', 'value' => array() ),
+     25 => array( 'name' => 'var26', 'values' => '{visit},{jump over to},{take a look at}', 'value' => array() )
+     );
+
+  $default_options['fitcash_spinning_header_text'] = $fitcash_def_header;
+  $default_options['fitcash_spinning_footer_text'] = $fitcash_def_footer;
+  $default_options['fitcash_text_variable'] = $fitcash_def_vars;
 
   $fitcash_options = get_option('fitcash_import_posts');
 
@@ -256,6 +331,8 @@ function fitcash_plugin_create_option_page()
   {
     fitcash_fetch_articles();
   }
+
+  fitcash_check_text_var_btns();
 
   fitcash_plugin_print_option_page();
 

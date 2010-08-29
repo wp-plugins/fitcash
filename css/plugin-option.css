@@ -1,3 +1,14 @@
+.right-bottom
+{
+  float:  right;
+}
+
+.right-bottom a
+{
+  text-decoration: none;
+}
+
+
 .float-left
 {
   position: relative;

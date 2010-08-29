@@ -17,12 +17,12 @@ function fitcash_plugin_print_option_page()
   $fitcash_import_schedule = fitcash_get_option('fitcash_import_schedule');
   $fitcash_publish_option  = fitcash_get_option('fitcash_publish_option');
   $fitcash_text_vars   = fitcash_get_option('fitcash_text_vars');
+  $fitcash_num_text_vars   = fitcash_get_option('fitcash_num_text_vars');
   $fitcash_text_variable   = fitcash_get_option('fitcash_text_variable');
 
-
   $arr_frequency=array(
-                    'daily' => 'Daily',
-                    'weekly' => 'Weekly',
+                    'daily'   => 'Daily',
+                    'weekly'  => 'Weekly',
                     'monthly' => 'Monthly'
                       );
 
@@ -41,6 +41,7 @@ function fitcash_plugin_print_option_page()
 
   echo
   '<div class="wrap">' . "\n" .
+  '  <a name="Top"></a>' . "\n" .
   '  <div class="icon32"></div>' . "\n" .
   '  <h2>FitCash - Plugin Settings</h2>' . "\n" .
   '  <hr />' . "\n" .
@@ -89,10 +90,10 @@ function fitcash_plugin_print_option_page()
   '                  <td><input type="text" id="fitcash_jv_profit_center_id" name="fitcash_jv_profit_center_id" value="' . $fitcash_jv_profit_center_id . '" /></td>' . "\n" .
   '              </tr>' . "\n" .
   '              <tr><th class="fitcash_option_left_part"><label for="fitcash_post_header_text">Edit the Default Article Header</label></th>' . "\n" .
-  '                  <td><b><textarea rows="3" cols="55" id="fitcash_post_header_text" name="fitcash_post_header_text">' . $fitcash_post_header_text . '</textarea></b></td>' . "\n" .
+  '                  <td><b><textarea rows="3" cols="55" id="fitcash_post_header_text" name="fitcash_post_header_text">' . html_entity_decode($fitcash_post_header_text, ENT_QUOTES) . '</textarea></b></td>' . "\n" .
   '              </tr>' . "\n" .
   '              <tr><th class="fitcash_option_left_part"><label for="fitcash_post_footer_text">Edit the Default Article Footer</label></th>' . "\n" .
-  '                  <td><b><textarea rows="3" cols="55" id="fitcash_post_footer_text" name="fitcash_post_footer_text">' . $fitcash_post_footer_text . '</textarea></b></td>' . "\n" .
+  '                  <td><b><textarea rows="3" cols="55" id="fitcash_post_footer_text" name="fitcash_post_footer_text">' . html_entity_decode($fitcash_post_footer_text, ENT_QUOTES) . '</textarea></b></td>' . "\n" .
   '              </tr>' . "\n" .
   '              <tr><th class="fitcash_option_left_part"><label for="">How Frequently Do You Want New Articles Imported</label></th>' . "\n" .
   '                  <td><ul><li>' . "\n";
@@ -194,10 +195,10 @@ function fitcash_plugin_print_option_page()
   {
     echo
     '              <tr><th class="fitcash_option_left_part"><label for="fitcash_spinning_txt_header_' . $i . '">Optional Header Text ' . ($i + 1) . ':</label></th>' . "\n" .
-    '                  <td><textarea rows="3" cols="55" id="fitcash_spinning_textarea_header_' . $i . '" name="fitcash_spinning_text_header_' . $i . '">' . $fitcash_spinning_header_text[$i] . '</textarea></td>' . "\n" .
+    '                  <td><textarea rows="3" cols="55" id="fitcash_spinning_textarea_header_' . $i . '" name="fitcash_spinning_text_header_' . $i . '">' . html_entity_decode($fitcash_spinning_header_text[$i], ENT_QUOTES) . '</textarea></td>' . "\n" .
     '              </tr>' . "\n" .
     '              <tr><th class="fitcash_option_left_part"><label for="fitcash_spinning_txt_footer_' . $i . '">Optional Footer Text ' . ($i + 1) . ':</label></th>' . "\n" .
-    '                  <td><textarea rows="3" cols="55" id="fitcash_spinning_textarea_footer_' . $i . '" name="fitcash_spinning_text_footer_' . $i . '">' . $fitcash_spinning_footer_text[$i] . '</textarea></td>' . "\n" .
+    '                  <td><textarea rows="3" cols="55" id="fitcash_spinning_textarea_footer_' . $i . '" name="fitcash_spinning_text_footer_' . $i . '">' . html_entity_decode($fitcash_spinning_footer_text[$i], ENT_QUOTES) . '</textarea></td>' . "\n" .
     '              </tr>' . "\n";
   }
 
@@ -207,6 +208,9 @@ function fitcash_plugin_print_option_page()
     $checked = ' ';
 
   echo
+  '              <tr><th class="fitcash_option_left_part"><label for=""></label></th>' . "\n" .
+  '                  <td><div class="right-bottom"><a href="#Top">Back to Top</a></div></td>' . "\n" .
+  '              </tr>' . "\n" .
   '              </table>' . "\n" .
   '            </div>' . "\n" .
   '          </div>' . "\n" .
@@ -219,26 +223,40 @@ function fitcash_plugin_print_option_page()
   '            <div class="inside">' . "\n" .
   '              <p>' . "\n" .
   '                With this feature you can add variables to your header and footer text versions, which are changed randomly.<br /><br />' .
-  '                They can be used like "... some text {variable 1 name} some more text ..." - then the "variable 1 name" will be replaced with the values you have set. Set the values comma seperated in {}.<br /><br />' . "\n" .
+  '                They can be used like "... some text {variable 1 name} some more text ..." - then the "variable 1 name" will be replaced with the values you have set. Set the values comma seperated in {} - <b>please take care that there are no spaces between the commas and brackets like {},{},{},...</b>.<br /><br />' . "\n" .
   '              </p>' . "\n" .
   '              <table class="form-table">' . "\n" .
-  '              <tr><th class="fitcash_option_left_part"><label for="fitcash_spinning_txt_header_' . $i . '">Activate text variables: </label></th>' . "\n" .
-  '                  <td><input type="checkbox" name="fitcash_text_vars" value="" ' . $checked . ' /></td>' . "\n" .
+  '              <tr><th class="fitcash_option_left_part"><label for="fitcash_text_vars">Activate text variables: </label></th>' . "\n" .
+  '                  <td><input type="checkbox" name="fitcash_text_vars" value="open" ' . $checked . ' /></td>' . "\n" .
   '              </tr>' . "\n";
+
 
   if ( $fitcash_text_vars == 'on' )
   {
-    for ( $i = 0; $i < 5; $i++ )
+    echo
+    '              <tr><th class="fitcash_option_left_part"><label for="fitcash_add_text_var_btn"></label></th>' . "\n" .
+    '                  <td>' . "\n" .
+    '                   <div class="div-wait" id="divwait4"><img src="' . FITPURL . 'img/loading.gif" /></div>' . "\n" .
+    '                   <input type="submit" class="button-primary" value="' . __('Add New Text Variable', 'fitcash') . '" id="fitcash_add_text_var_btn" name="fitcash_add_text_var_btn" onclick="document.getElementById(nameofDivWait).style.display=\'inline\';this.form.submit();" /><br />' . "\n" .    
+    '                  </td>' . "\n" .
+    '              </tr>' . "\n";
+
+    for ( $i = 0; $i < $fitcash_num_text_vars; $i++ )
     {
       echo
       '              <tr><th class="fitcash_option_left_part"><label for="fitcash_dyn_txt_var_' . $i . '">Text Variable ' . ($i + 1) . ':</label></th>' . "\n" .
-      '                  <td>Name:<br /><input type="text" name="fitcash_text_var_' . $i . '_name" value="' . $fitcash_text_variable[$i]['name'] . '" /><br /><br />' . "\n" .
+      '                  <td>Name:<br /><input type="text" name="fitcash_text_var_' . $i . '_name" value="' . $fitcash_text_variable[$i]['name'] . '" />' . "\n" .
+      '                      <div class="div-wait" id="divwait_var_' . $i . '"><img src="' . FITPURL . 'img/loading.gif" /></div>' . "\n" .
+      '                      <input type="submit" class="button-primary" value="' . __('Delete Variable', 'fitcash') . '" id="fitcash_delete_text_var_' . $i . '_btn" name="fitcash_delete_text_var_' . $i . '_btn" onclick="document.getElementById(nameofDivWait).style.display=\'inline\';this.form.submit();" /><br /><br />' . "\n" .    
       '                      Values:<br /><textarea rows="3" cols="55" name="fitcash_text_var_' . $i . '_values">' . $fitcash_text_variable[$i]['values'] . '</textarea></td>' . "\n" .
       '              </tr>' . "\n";
     }
   }
 
   echo
+  '              <tr><th class="fitcash_option_left_part"><label for=""></label></th>' . "\n" .
+  '                  <td><div class="right-bottom"><a href="#Top">Back to Top</a></div></td>' . "\n" .
+  '              </tr>' . "\n" .
   '              </table>' . "\n" .
   '            </div>' . "\n" .
   '          </div>' . "\n" .

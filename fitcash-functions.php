@@ -8,6 +8,32 @@ global $wpdb;
 ////////////////////////////////////////////////////////////////////////////////
 function fitcash_save_plugin_options()
 {
+  $fitcash_num_text_vars = fitcash_get_option('fitcash_num_text_vars');
+
+  $fitcash_spinning_header_text = array();
+  for ( $i = 0; $i < 10; $i++ )
+  {
+    $fitcash_spinning_header_text[$i] = htmlentities($_POST['fitcash_spinning_text_header_' . $i], ENT_QUOTES);
+    $fitcash_spinning_footer_text[$i] = htmlentities($_POST['fitcash_spinning_text_footer_' . $i], ENT_QUOTES);
+  }
+
+  $options = array(
+//       'fitcash_import_user_id'           => $_POST['fitcash_import_user_id'],
+//       'fitcash_import_feed_url'          => $_POST['fitcash_import_feed_url'],
+       'fitcash_jv_profit_center_id'      => $_POST['fitcash_jv_profit_center_id'],
+       'fitcash_import_cats'              => $_POST['fitcash_import_cats_select'],
+       'fitcash_post_header_text'         => $_POST['fitcash_post_header_text'],
+       'fitcash_post_footer_text'         => $_POST['fitcash_post_footer_text'],
+       'fitcash_spinning_header_text'         => $fitcash_spinning_header_text,
+       'fitcash_spinning_footer_text'         => $fitcash_spinning_footer_text,
+       'fitcash_text_vars'            => $_POST['fitcash_text_vars'],
+       'fitcash_num_text_vars'            => $fitcash_num_text_vars,
+       'fitcash_count_post_first_import'  => intval($_POST['fitcash_count_post_first_import']),
+//       'fitcash_count_post_next_imports'  => $_POST['fitcash_count_post_nect_import'],
+       'fitcash_import_schedule'          => $_POST['fitcash_import_schedule'],
+       'fitcash_publish_option'           => $_POST['fitcash_publish_option']
+        );
+
   //  check if text vars is set 
   if (!isset( $_POST['fitcash_text_vars'] ))
   {
@@ -20,38 +46,16 @@ function fitcash_save_plugin_options()
     $fitcash_text_vars = 'on';
 
     //  read text variables
-    for ($i=0; $i < 5; $i++)
+    for ($i=0; $i < $fitcash_num_text_vars; $i++)
     {
+      $values = $_POST['fitcash_text_var_' . $i . '_values'];
       $fitcash_text_variable[$i]['name']   = $_POST['fitcash_text_var_' . $i . '_name'];
-      $fitcash_text_variable[$i]['values'] = $_POST['fitcash_text_var_' . $i . '_values'];
+      $fitcash_text_variable[$i]['values'] = htmlentities($values, ENT_QUOTES);
       $fitcash_text_variable[$i]['value']  = explode( '},{', $fitcash_text_variable[$i]['values']);
     }
+    $options['fitcash_text_variable'] = $fitcash_text_variable;
   }
-
-
-  $fitcash_spinning_header_text = array();
-  for ( $i = 0; $i < 10; $i++ )
-  {
-    $fitcash_spinning_header_text[$i] = $_POST['fitcash_spinning_text_header_' . $i];
-    $fitcash_spinning_footer_text[$i] = $_POST['fitcash_spinning_text_footer_' . $i];
-  }
-
-  $options = array(
-//       'jbf_import_user_id'           => $_POST['fitcash_import_user_id'],
-//       'jbf_import_feed_url'          => $_POST['fitcash_import_feed_url'],
-       'fitcash_jv_profit_center_id'      => $_POST['fitcash_jv_profit_center_id'],
-       'fitcash_import_cats'              => $_POST['fitcash_import_cats_select'],
-       'fitcash_post_header_text'         => $_POST['fitcash_post_header_text'],
-       'fitcash_post_footer_text'         => $_POST['fitcash_post_footer_text'],
-       'fitcash_spinning_header_text'         => $fitcash_spinning_header_text,
-       'fitcash_spinning_footer_text'         => $fitcash_spinning_footer_text,
-       'fitcash_text_vars'            => $_POST['fitcash_text_vars'],
-       'fitcash_text_variable'        => $fitcash_text_variable,
-       'fitcash_count_post_first_import'  => intval($_POST['fitcash_count_post_first_import']),
-//       'jbf_count_post_next_imports'  => $_POST['fitcash_count_post_nect_import'],
-       'fitcash_import_schedule'          => $_POST['fitcash_import_schedule'],
-       'fitcash_publish_option'           => $_POST['fitcash_publish_option']
-        );
+  $options['fitcash_text_vars'] = $fitcash_text_vars;
 
   fitcash_update_options($options);
 
@@ -69,6 +73,45 @@ function fitcash_save_plugin_options()
   return;
 }
 
+
+////////////////////////////////////////////////////////////////////////////////
+// check all text var buttons if posted
+////////////////////////////////////////////////////////////////////////////////
+function fitcash_check_text_var_btns()
+{
+  $fitcash_text_variable = fitcash_get_option('fitcash_text_variable');
+
+  // get count of text vars
+  $fitcash_num_text_vars = fitcash_get_option('fitcash_num_text_vars');
+
+  if ( $_POST['fitcash_add_text_var_btn'] )
+  {
+    $fitcash_num_text_vars++;
+    fitcash_update_option( 'fitcash_num_text_vars', $fitcash_num_text_vars);
+
+    return;    
+  }
+
+  // check each text var 
+  for ( $i = 0; $i < $fitcash_num_text_vars; $i++ )
+  {
+    if ( $_POST['fitcash_delete_text_var_' . $i . '_btn'] )
+    {
+      // delete array field
+      for ( $x = $i; $x < ($fitcash_num_text_vars - 1); $x++ )
+      {
+        $fitcash_text_variable[$x] = $fitcash_text_variable[$x + 1];
+      }
+      $fitcash_num_text_vars--;
+      fitcash_update_option( 'fitcash_num_text_vars', $fitcash_num_text_vars);
+      fitcash_update_option( 'fitcash_text_variable', $fitcash_text_variable);
+
+      return;
+    }
+  }
+
+  return;
+}
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -125,7 +168,7 @@ function fitcash_fetch_articles()
   else if ( $no_of_imported_posts > 0 )
   {
     echo '<div id="message" class="updated fade">';
-    echo '<strong>Successfully imported ' . $no_of_imported_posts . ' posts from ' . $url_display . '.</strong></div>';
+    echo '<strong>Successfully imported ' . $no_of_imported_posts . ' posts from ' . $url_display . ' !!!</strong></div>';
   }
 
   return;    
@@ -138,8 +181,9 @@ function fitcash_fetch_articles()
 function fitcash_replace_text_vars( $text )
 {
   $fitcash_text_variable   = fitcash_get_option('fitcash_text_variable');
+  $fitcash_num_text_vars = fitcash_get_option('fitcash_num_text_vars');
 
-  for ( $i=0; $i < 5; $i++ )  
+  for ( $i=0; $i < $fitcash_num_text_vars; $i++ )  
   {
     while ( !(strpos( $text, '{' . $fitcash_text_variable[$i]['name'] . '}' ) === false) )
     {
