@@ -5,7 +5,7 @@ Plugin Uri: http://it-gnoth.de/wordpress/wordpress-plugins
 Tags: import, rss feed, jbf, import posts, import articles, fitcash, affiliate, jon benson, fit365online, affiliate tool
 Requires at least: 2.7
 Tested up to: WP 3.0.1
-Stable tag: 1.1.1
+Stable tag: 1.2.0
 
 
 
@@ -15,6 +15,7 @@ Tested with **Wordpress 3.0.1**
 
 This weight loss and fitness article affiliate tool automatically adds related health and fitness content to your blog. These articles are designed to help fitness-oriented bloggers/affiliates earn money from every sale produced from the articles your blog will receive as well as to give valuable body transformation content to interested readers. FitCash take only a few minutes to set up and then runs on auto-pilot. You can preview articles or set articles to publish automatically. Each article allows for a header and a footer to be auto-added or edited by you. This feature includes "spinning text" so articles are 99% unique and more Google-friendly. Imports content, graphics, pictures, banners, and even flash movie files. It's the perfect addition to any blogger who wants to earn money via fitness and weight loss on their blog! 
 
+Import posts/articles from Jon Benson Fitness© Host Blog to your blog via last rss feed. WP Cron settings for automatical import in regular intervall.
 
 == Support ==
 
