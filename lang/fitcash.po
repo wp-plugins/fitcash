@@ -1,0 +1,122 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: FitCash Version 1.2.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-08-29 17:42+0200\n"
+"PO-Revision-Date: 2010-08-29 18:07+0100\n"
+"Last-Translator: Christian Gnoth <support@it-gnoth.de>\n"
+"Language-Team: Christian Gnoth <support@it-gnoth.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: wir, sie\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+
+#: fitcash.php:378
+msgid "Once Weekly"
+msgstr "einmal wöchtenlich"
+
+#: fitcash.php:379
+msgid "Once Monthly"
+msgstr "einmal monatlich"
+
+#: fitcash-option-page.php:24
+msgid "Daily"
+msgstr "Täglich"
+
+#: fitcash-option-page.php:25
+msgid "Weekly"
+msgstr "Wöchentlich"
+
+#: fitcash-option-page.php:26
+msgid "Monthly"
+msgstr "Monatlich"
+
+#: fitcash-option-page.php:30
+msgid "Publish Immediately (Best Option)"
+msgstr "Sofort veröffentlichen"
+
+#: fitcash-option-page.php:46
+msgid "  <h2>FitCash - Plugin Settings</h2>"
+msgstr "  <h2>FitCash - Plugin Einstellungen</h2>"
+
+#: fitcash-option-page.php:49
+msgid "    <b>Welcome to Jon Benson's WP Tool!</b><br />"
+msgstr ""
+
+#: fitcash-option-page.php:50
+msgid "This free plugin allows you to import articles from Jon Benson's Fitness and nutrition blog under <a class=\"link-extern\" href=\"http://www.jonbensonfitness.com\" target=\"_blank\" tilte=\"Jon Bensons Fitness\">http://www.jonbensonfitness.com</a>, complete <b>with your affiliate links</b>.This provides you with automatic content that can also earn you commissions on all of Jon Benson's Clickbank Products."
+msgstr "Dieses freie Plugin ermöglicht Ihnen Artikel von Jon Bensons Host und Nutrition Blog unter <a class=\"link-extern\" href=\"http://www.jonbensonfitness.com\" target=\"_blank\" tilte=\"Jon Bensons Fitness\">http://www.jonbensonfitness.com</a> zu importieren, komplett <b>mit Ihren Affiliate Links</b>. Dadurch beziehen Sie automatisch Inhalt und Artikel, mit denen Sie ebenso Kommission verdienen können auf alle Jon Benson's Clickbank Produkte."
+
+#: fitcash-option-page.php:158
+msgid "Add Category"
+msgstr "Kategorie hinzufügen"
+
+#: fitcash-option-page.php:182
+msgid "Save Changes"
+msgstr "Änderungen speichern"
+
+#: fitcash-option-page.php:184
+msgid "Import From JonBensonFitness.com"
+msgstr ""
+
+#: fitcash-option-page.php:197
+msgid "\">Optional Header Text "
+msgstr ""
+
+#: fitcash-option-page.php:222
+msgid "Randomly Changed Text Variables - Create Unique Content for the Web !"
+msgstr "Zufällig veränderte Text Variablen - Erzeugen Sie unique Inhalt für das Web !"
+
+#: fitcash-option-page.php:225
+msgid "With this feature you can add variables to your header and footer text versions, which are changed randomly."
+msgstr "Mit diesem Feature Sie können Variablen zu Ihrem Header und Footer Text hinzufügen, die Werte werden zufällig zugeordnet."
+
+#: fitcash-option-page.php:226
+msgid "They can be used like \"... some text {variable 1 name} some more text ...\" - then the \"variable 1 name\" will be replaced with the values you have set. Set the values comma seperated in {} - <b>please take care that there are no spaces between the commas and brackets like {},{},{},...</b>."
+msgstr "Diese können verwendet werden wie z.B.: .... text {variable 1} text text .... - die Variable mit dem Namen Var 1 wird dann ersetzt mit den Werten die Sie gespeichert haben. Setzen Sie die Werte für die Variablen durch Kommata getrennt in Klammern {} - <b>bitte achten Sie darauf daß keine Leerzeichen zwischen den Klammern sind {},{},{},.... </b>"
+
+#: fitcash-option-page.php:240
+msgid "Add New Text Variable"
+msgstr ""
+
+#: fitcash-functions.php:135
+msgid "Category added !!!"
+msgstr "Kategorie hinzugefügt"
+
+#: fitcash-functions.php:140
+msgid "Category Name missing !!!"
+msgstr "Kategorie Name fehlt !!!"
+
+#: fitcash-functions.php:166
+msgid "Successfully imported from "
+msgstr "Erfolgreich importiert von"
+
+#: fitcash-functions.php:166
+msgid ", but didn't found any new posts."
+msgstr ", aber konnte keine neuen Artikel finden."
+
+#: fitcash-functions.php:171
+msgid "Successfully imported "
+msgstr "Erfolgreich importiert "
+
+#: fitcash-functions.php:171
+msgid " posts from "
+msgstr " Artikel von "
+
+#: fitcash-functions.php:171
+msgid " !!!</strong></div>"
+msgstr ""
+
+#: fitcash-functions.php:213
+msgid "Invalid JV Profit Center affiliate ID. Please re-enter or create a valid ID at http://www.jvprofitcenter.com."
+msgstr "Ungültige JV Profit Center Affiliate ID. Bitte geben Sie eine gtültige ID ein oder registrieren Sie sich unter http://jvprofitcenter.com"
+
