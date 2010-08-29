@@ -5,7 +5,7 @@ Plugin Uri: http://it-gnoth.de/wordpress/wordpress-plugins
 Tags: import, rss feed, jbf, import posts, import articles, fitcash, affiliate, jon benson, fit365online, affiliate tool
 Requires at least: 2.7
 Tested up to: WP 3.0.1
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 
 
 
@@ -15,9 +15,9 @@ Tested with **Wordpress 3.0.1**
 
 This weight loss and fitness article affiliate tool automatically adds related health and fitness content to your blog. These articles are designed to help fitness-oriented bloggers/affiliates earn money from every sale produced from the articles your blog will receive as well as to give valuable body transformation content to interested readers. FitCash take only a few minutes to set up and then runs on auto-pilot. You can preview articles or set articles to publish automatically. Each article allows for a header and a footer to be auto-added or edited by you. This feature includes "spinning text" so articles are 99% unique and more Google-friendly. Imports content, graphics, pictures, banners, and even flash movie files. It's the perfect addition to any blogger who wants to earn money via fitness and weight loss on their blog! 
 
-Import posts/articles from Jon Benson Fitness© Host Blog to your blog via last rss feed. WP Cron settings for automatical import in regular intervall.
+Import posts, articles, videos and more from fitness author Jon Benson's weekly blog, complete with your affiliate links in place. WP Cron will auto-import at regular 24-hour intervals so all the work is done for you! By Jon Benson.
 
-for support: Please post your question in the forum under **[Support forum](http://wordpress.org/tags/fitcash?forum_id=10#postform)** .  
+If you have problems or questions, please post it in the **[Support forum](http://wordpress.org/tags/fitcash?forum_id=10#postform)** .  
 
 == Support ==
 
@@ -67,6 +67,8 @@ the directory of the stable readme.txt, so in this case, `/tags/4.3/screenshot-1
 = 1.2.1 =
 - language translation added
 
+= 1.2.2 =
+- errors fixed
 
 `<?php code(); // goes in backticks ?>`
 

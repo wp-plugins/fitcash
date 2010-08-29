@@ -168,7 +168,7 @@ function fitcash_fetch_articles()
   else if ( $no_of_imported_posts > 0 )
   {
     echo '<div id="message" class="updated fade">';
-    echo '<strong>' . __('Successfully imported ', 'fitcash') . $no_of_imported_posts . __(' posts from ', 'fitcash') . $url_display . ' !!!</strong></div>';
+    echo '<strong>' . __('Successfully imported ', 'fitcash') . $no_of_imported_posts . __(' posts from ', 'fitcash') . $url_display . '.</strong></div>';
   }
 
   return;    
