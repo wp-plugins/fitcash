@@ -21,14 +21,14 @@ function fitcash_plugin_print_option_page()
   $fitcash_text_variable   = fitcash_get_option('fitcash_text_variable');
 
   $arr_frequency=array(
-                    'daily'   => 'Daily',
-                    'weekly'  => 'Weekly',
-                    'monthly' => 'Monthly'
+                    'daily'   => __('Daily', 'fitcash'),
+                    'weekly'  => __('Weekly', 'fitcash'),
+                    'monthly' => __('Monthly', 'fitcash')
                       );
 
   $arr_import_as_options=array(
-                    'publish' => 'Publish Immediately (Best Option)',
-                    'draft'   => 'Save As Drafts'
+                    'publish' => ('Publish Immediately (Best Option)', 'fitcash'),
+                    'draft'   => ('Save As Drafts', 'fitcash')
                               );
 
   //  check if default cat exists
@@ -47,7 +47,7 @@ function fitcash_plugin_print_option_page()
   '  <hr />' . "\n" .
   '  <p>' . "\n" .
   '    <b>Welcome to Jon Benson\'s WP Tool!</b><br />' . "\n" .
-  '    This free plugin allows you to import articles from Jon Benson\'s Fitness and nutrition blog under <a class="link-extern" href="http://www.jonbensonfitness.com" target="_blank" tilte="Jon Bensons Fitness">http://www.jonbensonfitness.com</a>, complete <b>with your affiliate links</b>.This provides you with automatic content that can also earn you commissions on all of Jon Benson\'s Clickbank Products.' . "\n" .
+  '    ' . __('This free plugin allows you to import articles from Jon Benson\'s Fitness and nutrition blog under <a class="link-extern" href="http://www.jonbensonfitness.com" target="_blank" tilte="Jon Bensons Fitness">http://www.jonbensonfitness.com</a>, complete <b>with your affiliate links</b>.This provides you with automatic content that can also earn you commissions on all of Jon Benson\'s Clickbank Products.', 'fitcash') . ' . "\n" .
   '  </p>' . "\n" .
   '  <hr />' . "\n" .
   '  <div class="clear"></div>' . "\n" . 
@@ -82,7 +82,7 @@ function fitcash_plugin_print_option_page()
   '      <div class="has-sidebar-content" id="post-body-content">' . "\n" .
   '        <div class="meta-box-sortabless">' . "\n" .
   '          <div class="postbox float-left" id="fitcash-settings">' . "\n" .
-  '            <h3>' . __('Settings', 'fitcash_import_posts') . '</h3>' . "\n" .
+  '            <h3>' . __('Settings', 'fitcash') . '</h3>' . "\n" .
   '            <div class="inside">' . "\n" .
   '              <b>Import from JonBensonFitness.com</b>' . "\n" .
   '              <table class="form-table">' . "\n" .
@@ -187,7 +187,7 @@ function fitcash_plugin_print_option_page()
   '            <h3>' . __('Spinning Text - Create Unique Content for the Web !', 'fitcash') . '</h3>' . "\n" .
   '            <div class="inside">' . "\n" .
   '              <p>' . "\n" .
-  '                With spinning text you can create unique content on your blog. These ten different texts will be added to your imported posts automatical. During each import done by the worpdress cron - the next header and footer of the list is taken and added to your imported posts' . "\n" .
+  '                ' . __('With spinning text you can create unique content on your blog. These ten different texts will be added to your imported posts automatical. During each import done by the worpdress cron - the next header and footer of the list is taken and added to your imported posts', 'fitcash') . ' . "\n" .
   '              </p>' . "\n" .
   '              <table class="form-table">' . "\n";
 
@@ -222,8 +222,8 @@ function fitcash_plugin_print_option_page()
   '            <h3>' . __('Randomly Changed Text Variables - Create Unique Content for the Web !', 'fitcash') . '</h3>' . "\n" .
   '            <div class="inside">' . "\n" .
   '              <p>' . "\n" .
-  '                With this feature you can add variables to your header and footer text versions, which are changed randomly.<br /><br />' .
-  '                They can be used like "... some text {variable 1 name} some more text ..." - then the "variable 1 name" will be replaced with the values you have set. Set the values comma seperated in {} - <b>please take care that there are no spaces between the commas and brackets like {},{},{},...</b>.<br /><br />' . "\n" .
+  '                ' . __('With this feature you can add variables to your header and footer text versions, which are changed randomly.', 'fitcash') . '<br /><br />' .
+  '                ' . __('They can be used like "... some text {variable 1 name} some more text ..." - then the "variable 1 name" will be replaced with the values you have set. Set the values comma seperated in {} - <b>please take care that there are no spaces between the commas and brackets like {},{},{},...</b>.', 'fitcash') . '<br /><br />' . "\n" .
   '              </p>' . "\n" .
   '              <table class="form-table">' . "\n" .
   '              <tr><th class="fitcash_option_left_part"><label for="fitcash_text_vars">Activate text variables: </label></th>' . "\n" .

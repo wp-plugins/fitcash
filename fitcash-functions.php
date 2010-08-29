@@ -132,12 +132,12 @@ function fitcash_add_category()
       wp_create_category( $new_cat); 
 
     echo '<div id="message" class="updated fade">';
-    echo '<strong>Category added !!!</strong>.</div>';
+    echo '<strong>' . __('Category added !!!', 'fitcash') . '</strong>.</div>';
   }
   else
   {
     echo '<div id="message" class="error fade">';
-    echo '<strong>Category Name missing !!!</strong>.</div>';
+    echo '<strong>' . __('Category Name missing !!!', 'fitcash') . '</strong>.</div>';
   }
 
   return;
@@ -163,12 +163,12 @@ function fitcash_fetch_articles()
   if ( $no_of_imported_posts == 0 )
   {
     echo '<div id="message" class="updated fade">';
-    echo '<strong>Successfully imported from ' . $url_display . ', but didn\'t found any new posts.</strong></div>';
+    echo '<strong>' . __('Successfully imported from ', 'fitcash') . $url_display . __(', but didn\'t found any new posts.', 'fitcash') . '</strong></div>';
   }
   else if ( $no_of_imported_posts > 0 )
   {
     echo '<div id="message" class="updated fade">';
-    echo '<strong>Successfully imported ' . $no_of_imported_posts . ' posts from ' . $url_display . ' !!!</strong></div>';
+    echo '<strong>' . __('Successfully imported ', 'fitcash') . $no_of_imported_posts . __(' posts from ', 'fitcash') . $url_display . ' !!!</strong></div>';
   }
 
   return;    
@@ -210,7 +210,7 @@ function fitcash_importArticles($url,$jv_profit_center_id,$blog_user_id,$no_of_a
 
   if( trim($jv_profit_center_id) == "" )
   {
-    echo "Invalid JV Profit Center affiliate ID. Please re-enter or create a valid ID at http://www.jvprofitcenter.com.";
+    _e('Invalid JV Profit Center affiliate ID. Please re-enter or create a valid ID at http://www.jvprofitcenter.com.', 'fitcash');
     return -1;
   }
   else if($jv_profit_center_id != "")
