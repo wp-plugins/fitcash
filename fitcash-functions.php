@@ -225,6 +225,7 @@ function fitcash_importArticles($url,$jv_profit_center_id,$blog_user_id,$no_of_a
 
     if($no_of_article_to_be_imported > count($items))
       $no_of_article_to_be_imported = count($items);
+
     //while ($i<count($items)){
     while ($i<$no_of_article_to_be_imported)
     {
@@ -258,14 +259,14 @@ function fitcash_importArticles($url,$jv_profit_center_id,$blog_user_id,$no_of_a
         $fitcash_spinning_last_number = 0;
       else
         $fitcash_spinning_last_number++;
-      $i = $fitcash_spinning_last_number;
+      $indx = $fitcash_spinning_last_number;
       fitcash_update_option( 'fitcash_spinning_last_number', $fitcash_spinning_last_number);
 
       //  check if spinning text is set
-      if ( $fitcash_spinning_footer_text[$i] != '' AND $fitcash_spinning_header_text[$i] != '' )
+      if ( $fitcash_spinning_footer_text[$indx] != '' AND $fitcash_spinning_header_text[$indx] != '' )
       {
-        $fitcash_header_text = $fitcash_spinning_header_text[$i];
-        $fitcash_footer_text = $fitcash_spinning_footer_text[$i];
+        $fitcash_header_text = $fitcash_spinning_header_text[$indx];
+        $fitcash_footer_text = $fitcash_spinning_footer_text[$indx];
       }
       else
       {
@@ -290,6 +291,7 @@ function fitcash_importArticles($url,$jv_profit_center_id,$blog_user_id,$no_of_a
       $all_tags_for_a_post=$items[$i]['post_tags'];
       $tags_array=explode(",",$all_tags_for_a_post);
       $post_tag_id=array();
+
       if( !fitcash_postExists($postTitle) )
       {
                 //////////////////////////////////

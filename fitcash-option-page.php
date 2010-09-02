@@ -90,10 +90,10 @@ function fitcash_plugin_print_option_page()
   '                  <td><input type="text" id="fitcash_jv_profit_center_id" name="fitcash_jv_profit_center_id" value="' . $fitcash_jv_profit_center_id . '" /></td>' . "\n" .
   '              </tr>' . "\n" .
   '              <tr><th class="fitcash_option_left_part"><label for="fitcash_post_header_text">Edit the Default Article Header</label></th>' . "\n" .
-  '                  <td><b><textarea rows="3" cols="55" id="fitcash_post_header_text" name="fitcash_post_header_text">' . html_entity_decode($fitcash_post_header_text, ENT_QUOTES) . '</textarea></b></td>' . "\n" .
+  '                  <td><b><textarea rows="3" cols="45" id="fitcash_post_header_text" name="fitcash_post_header_text">' . html_entity_decode($fitcash_post_header_text, ENT_QUOTES) . '</textarea></b></td>' . "\n" .
   '              </tr>' . "\n" .
   '              <tr><th class="fitcash_option_left_part"><label for="fitcash_post_footer_text">Edit the Default Article Footer</label></th>' . "\n" .
-  '                  <td><b><textarea rows="3" cols="55" id="fitcash_post_footer_text" name="fitcash_post_footer_text">' . html_entity_decode($fitcash_post_footer_text, ENT_QUOTES) . '</textarea></b></td>' . "\n" .
+  '                  <td><b><textarea rows="3" cols="45" id="fitcash_post_footer_text" name="fitcash_post_footer_text">' . html_entity_decode($fitcash_post_footer_text, ENT_QUOTES) . '</textarea></b></td>' . "\n" .
   '              </tr>' . "\n" .
   '              <tr><th class="fitcash_option_left_part"><label for="">How Frequently Do You Want New Articles Imported</label></th>' . "\n" .
   '                  <td><ul><li>' . "\n";
@@ -144,7 +144,8 @@ function fitcash_plugin_print_option_page()
 
   echo
   '                   </select><br /><br />' . "\n" .
-  '                   New Category: <input type="text" value="" name="fitcash_new_cat_name"  />  Parent Category: <select name="fitcash_parent_cat" size="1">' . "\n";
+  '                   <div class="margintb">New Category: <input type="text" value="" name="fitcash_new_cat_name"  /></div>' . "\n" .
+  '                   <div class="margintb">Parent Category: <select name="fitcash_parent_cat" size="1"></div>' . "\n";
 
   echo '  <option value="0">' . __('None', 'fitcash') . '</option>' . "\n";
   foreach( $categories as $cat)
@@ -195,10 +196,10 @@ function fitcash_plugin_print_option_page()
   {
     echo
     '              <tr><th class="fitcash_option_left_part"><label for="fitcash_spinning_txt_header_' . $i . '">Optional Header Text ' . ($i + 1) . ':</label></th>' . "\n" .
-    '                  <td><textarea rows="3" cols="55" id="fitcash_spinning_textarea_header_' . $i . '" name="fitcash_spinning_text_header_' . $i . '">' . html_entity_decode($fitcash_spinning_header_text[$i], ENT_QUOTES) . '</textarea></td>' . "\n" .
+    '                  <td><textarea rows="3" cols="45" id="fitcash_spinning_textarea_header_' . $i . '" name="fitcash_spinning_text_header_' . $i . '">' . html_entity_decode($fitcash_spinning_header_text[$i], ENT_QUOTES) . '</textarea></td>' . "\n" .
     '              </tr>' . "\n" .
     '              <tr><th class="fitcash_option_left_part"><label for="fitcash_spinning_txt_footer_' . $i . '">Optional Footer Text ' . ($i + 1) . ':</label></th>' . "\n" .
-    '                  <td><textarea rows="3" cols="55" id="fitcash_spinning_textarea_footer_' . $i . '" name="fitcash_spinning_text_footer_' . $i . '">' . html_entity_decode($fitcash_spinning_footer_text[$i], ENT_QUOTES) . '</textarea></td>' . "\n" .
+    '                  <td><textarea rows="3" cols="45" id="fitcash_spinning_textarea_footer_' . $i . '" name="fitcash_spinning_text_footer_' . $i . '">' . html_entity_decode($fitcash_spinning_footer_text[$i], ENT_QUOTES) . '</textarea></td>' . "\n" .
     '              </tr>' . "\n";
   }
 
@@ -248,7 +249,7 @@ function fitcash_plugin_print_option_page()
       '                  <td>Name:<br /><input type="text" name="fitcash_text_var_' . $i . '_name" value="' . $fitcash_text_variable[$i]['name'] . '" />' . "\n" .
       '                      <div class="div-wait" id="divwait_var_' . $i . '"><img src="' . FITPURL . 'img/loading.gif" /></div>' . "\n" .
       '                      <input type="submit" class="button-primary" value="' . __('Delete Variable', 'fitcash') . '" id="fitcash_delete_text_var_' . $i . '_btn" name="fitcash_delete_text_var_' . $i . '_btn" onclick="document.getElementById(nameofDivWait).style.display=\'inline\';this.form.submit();" /><br /><br />' . "\n" .    
-      '                      Values:<br /><textarea rows="3" cols="55" name="fitcash_text_var_' . $i . '_values">' . $fitcash_text_variable[$i]['values'] . '</textarea></td>' . "\n" .
+      '                      Values:<br /><textarea rows="3" cols="45" name="fitcash_text_var_' . $i . '_values">' . $fitcash_text_variable[$i]['values'] . '</textarea></td>' . "\n" .
       '              </tr>' . "\n";
     }
   }

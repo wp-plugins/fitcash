@@ -5,7 +5,7 @@ Plugin Uri: http://it-gnoth.de/wordpress/wordpress-plugins
 Tags: import, rss feed, jbf, import posts, import articles, fitcash, affiliate, jon benson, fit365online, affiliate tool
 Requires at least: 2.7
 Tested up to: WP 3.0.1
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 
 
 
@@ -69,6 +69,9 @@ the directory of the stable readme.txt, so in this case, `/tags/4.3/screenshot-1
 
 = 1.2.2 =
 - errors fixed
+
+= 1.2.2 =
+- minor design changes
 
 `<?php code(); // goes in backticks ?>`
 
