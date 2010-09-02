@@ -3,7 +3,7 @@
 Plugin Name: FitCash 
 Plugin URI: http://jonbensonfitness.com/wp-plugin
 Description: Import posts/articles from Jon Benson Fitness&copy; Host Blog to your blog via last rss feed. WP Cron settings for automatical import in regular intervals.
-Version: 1.2.3
+Version: 1.2.2
 Author: Jon Benson
 Author URI: http://jonbensonfitness.com
 License: GPL2
@@ -254,8 +254,8 @@ function fitcash_set_option_defaults()
 
   $fitcash_def_footer = array(
      '[ I hope you {var25} today&#039;s guest editorial by {var26} DO check out his latest book(s) using the links found in this blog or the banner below. Highly recommended! ]',
-     '[ Learn more about Jon and his methods by clicking on the links and/or banner in the article above {var27}... and get yourself started on a {var28} path to body transformation! ]',
-     '[ Like what you read today? Then {var29} Jon Benson&#039;s latest by clicking on the links or banners in this article {var27}... ]',
+     '[ Learn more about Jon and his methods by clicking on the links and/or banner in the article above {var24}... and get yourself started on a {var28} path to body transformation! ]',
+     '[ Like what you read today? Then {var29} Jon Benson&#039;s latest by clicking on the links or banners in this article {var24}... ]',
      '[ More from Jon Benson in upcoming blogs... but you can get more info and some freebies by {var8} Jon&#039;s pages found in the article above or the banner below. Thanks! ]',
      '[ Want to {var9} even more fat-loss and body transformation info? Then {var13} Jon&#039;s page by clicking on the links in the article above (or in the banner below) to get started today on reshaping YOUR body! ]'
      );
