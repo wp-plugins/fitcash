@@ -60,12 +60,18 @@ function fitcash_plugin_print_option_page()
   '    <div class="inner-sidebar float-right">' . "\n" .
   '      <div class="meta-box-sortabless ui-sortable" id="side-sortables">' . "\n" .
   '        <div class="postbox" id="fitcash_info">' . "\n" .
-  '          <h3 class="hndle">Jon Benson Affiliate Tools</h3>' . "\n" .
+  '          <h3 class="hndle">Suggested Affiliate Tools</h3>' . "\n" .
   '          <div class="inside">' . "\n" .
   '            <ul>' . "\n" .
   '              <li><img class="img-link-ico" src="' . FITPURL . 'img/jv_profit_center_favicon.jpg" alt="JV Profit Center Logo" /><a class="link-extern" href="http://www.jvprofitcenter.com" target="_blank" title="JV Profit Center">JV Profit Center</a></li>' . "\n" .
-  '              <li><img class="img-link-ico" src="http://www.jonbensonfitness.com/favicon.ico" alt="JonBensonFitness.com Logo" /><a class="link-extern" href="http://www.jonbensonfitness.com" target="_blank" title="JBF Product Support Center">JBF Product Support Center</a></li>' . "\n" .
   '            </ul>' . "\n" .
+  '            <hr />' . "\n" .
+  '            <h4>Let\'s Get Social!</h4>' . "\n" .    
+  '            <p>This incredible affiliate tool shows you how you can drive tons of cheap traffic to any offer (including your blog!) using social media such as Facebook.</p>' . "\n" .
+  '            <ul>' . "\n" .
+  '              <li><img class="img-link-ico" src="http://www.letsgetsocial.com/favicon.ico" alt="Let\'s Get Social!" /><a class="link-extern" href="https://touchstone.infusionsoft.com/go/lgs/jb20/" target="_blank" title="Let\'s Get Social!">Click here to Read More</a></li>' . "\n" .
+  '            </ul>' . "\n" .
+  '            <hr />' . "\n" .
   '          </div>' . "\n" .
   '        </div>' . "\n" .
   '        <div class="postbox" id="fitcash_links">' . "\n" .
@@ -73,6 +79,7 @@ function fitcash_plugin_print_option_page()
   '          <div class="inside">' . "\n" .
   '            <ul>' . "\n" .
   '              <li><img class="img-link-ico" src="http://www.clickbank.com/favicon.ico" alt="Clickbank.com Logo" /><a class="link-extern" href="http://www.clickbank.com" target="_blank" title="Clickbank.com">Clickbank.com</a></li>' . "\n" .
+  '              <li><img class="img-link-ico" src="http://www.jonbensonfitness.com/favicon.ico" alt="JonBensonFitness.com Logo" /><a class="link-extern" href="http://www.jonbensonfitness.com" target="_blank" title="JBF Product Support Center">JBF Product Support Center</a></li>' . "\n" .
   '            </ul>' . "\n" .
   '          </div>' . "\n" .
   '        </div>' . "\n" .
