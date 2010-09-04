@@ -1,0 +1,140 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#: fitcash.php:14 fitcash.php:15 fitcash.php:20 fitcash.php:50 fitcash.php:217
+#: fitcash.php:225 fitcash-option-page.php:54 fitcash-option-page.php:98
+#: fitcash-option-page.php:114 fitcash-option-page.php:130
+#: fitcash-option-page.php:147 fitcash-option-page.php:161
+#: fitcash-functions.php:192 fitcash-functions.php:193
+#: fitcash-functions.php:211 fitcash-functions.php:216
+#: fitcash-functions.php:234 fitcash-functions.php:236
+#: fitcash-functions.php:265 fitcash-functions.php:309
+#: fitcash-functions.php:352
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-08-29 17:42+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: fitcash.php:378
+msgid "Once Weekly"
+msgstr ""
+
+#: fitcash.php:379
+msgid "Once Monthly"
+msgstr ""
+
+#: fitcash-option-page.php:24
+msgid "Daily"
+msgstr ""
+
+#: fitcash-option-page.php:25
+msgid "Weekly"
+msgstr ""
+
+#: fitcash-option-page.php:26
+msgid "Monthly"
+msgstr ""
+
+#: fitcash-option-page.php:30
+msgid "Publish Immediately (Best Option)"
+msgstr ""
+
+#: fitcash-option-page.php:46
+msgid "  <h2>FitCash - Plugin Settings</h2>"
+msgstr ""
+
+#: fitcash-option-page.php:49
+msgid "    <b>Welcome to Jon Benson's WP Tool!</b><br />"
+msgstr ""
+
+#: fitcash-option-page.php:50
+msgid ""
+"This free plugin allows you to import articles from Jon Benson's Fitness and "
+"nutrition blog under <a class=\"link-extern\" href=\"http://www."
+"jonbensonfitness.com\" target=\"_blank\" tilte=\"Jon Bensons Fitness"
+"\">http://www.jonbensonfitness.com</a>, complete <b>with your affiliate "
+"links</b>.This provides you with automatic content that can also earn you "
+"commissions on all of Jon Benson's Clickbank Products."
+msgstr ""
+
+#: fitcash-option-page.php:158
+msgid "Add Category"
+msgstr ""
+
+#: fitcash-option-page.php:182
+msgid "Save Changes"
+msgstr ""
+
+#: fitcash-option-page.php:184
+msgid "Import From JonBensonFitness.com"
+msgstr ""
+
+#: fitcash-option-page.php:197
+msgid "\">Optional Header Text "
+msgstr ""
+
+#: fitcash-option-page.php:222
+msgid "Randomly Changed Text Variables - Create Unique Content for the Web !"
+msgstr ""
+
+#: fitcash-option-page.php:225
+msgid ""
+"With this feature you can add variables to your header and footer text "
+"versions, which are changed randomly."
+msgstr ""
+
+#: fitcash-option-page.php:226
+msgid ""
+"They can be used like \"... some text {variable 1 name} some more text ...\" "
+"- then the \"variable 1 name\" will be replaced with the values you have "
+"set. Set the values comma seperated in {} - <b>please take care that there "
+"are no spaces between the commas and brackets like {},{},{},...</b>."
+msgstr ""
+
+#: fitcash-option-page.php:240
+msgid "Add New Text Variable"
+msgstr ""
+
+#: fitcash-functions.php:135
+msgid "Category added !!!"
+msgstr ""
+
+#: fitcash-functions.php:140
+msgid "Category Name missing !!!"
+msgstr ""
+
+#: fitcash-functions.php:166
+msgid "Successfully imported from "
+msgstr ""
+
+#: fitcash-functions.php:166
+msgid ", but didn't found any new posts."
+msgstr ""
+
+#: fitcash-functions.php:171
+msgid "Successfully imported "
+msgstr ""
+
+#: fitcash-functions.php:171
+msgid " posts from "
+msgstr ""
+
+#: fitcash-functions.php:171
+msgid " !!!</strong></div>"
+msgstr ""
+
+#: fitcash-functions.php:213
+msgid ""
+"Invalid JV Profit Center affiliate ID. Please re-enter or create a valid ID "
+"at http://www.jvprofitcenter.com."
+msgstr ""
