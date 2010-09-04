@@ -1,11 +1,11 @@
 === FitCash ===
 Contributors: Jon Benson
 Author Uri: http://jonbensonfitness.com
-Plugin Uri: http://it-gnoth.de/wordpress/wordpress-plugins
+Plugin Uri: http://jvprofitcenter.com/blog/fitcash
 Tags: import, rss feed, jbf, import posts, import articles, fitcash, affiliate, jon benson, fit365online, affiliate tool
 Requires at least: 2.7
 Tested up to: WP 3.0.1
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 
 
 
@@ -72,6 +72,12 @@ the directory of the stable readme.txt, so in this case, `/tags/4.3/screenshot-1
 
 = 1.2.3 =
 - minor design changes
+
+= 1.2.4 =
+- plugin uri changed
+- errors fixed
+- error message added for empty default header/footer text
+
 
 `<?php code(); // goes in backticks ?>`
 

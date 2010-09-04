@@ -157,18 +157,49 @@ function fitcash_fetch_articles()
   $blog_user_for_import = fitcash_get_option('fitcash_import_user_id');
   $jv_profit_center_id  = fitcash_get_option('fitcash_jv_profit_center_id');
     
-  $no_of_imported_posts = fitcash_importArticles( $url, $jv_profit_center_id, $blog_user_for_import, fitcash_get_option('fitcash_count_post_first_import') );
-    
-  $url_display = substr( $url, strpos( $url, 'http://') + 7, (strpos( $url, '/', (strpos($url, 'http://') + 8)) - (strpos($url, 'http://') + 7)) );
-  if ( $no_of_imported_posts == 0 )
+  //  check if the default and spining text fields are set
+  $error_flag = 0;
+  $def_text_flag = 0;
+  $spinning_text_flag = 0;
+  $def_h_text = fitcash_get_option('fitcash_post_header_text');
+  $def_f_text = fitcash_get_option('fitcash_post_footer_text');
+  if ( empty($def_h_text) OR empty($def_f_text) )
+    $def_text_flag = 1;
+
+  $last_number = fitcash_get_option('fitcash_spinning_last_number');
+  $h_text = fitcash_get_option('fitcash_spinning_header_text');
+  $f_text = fitcash_get_option('fitcash_spinning_footer_text');
+  for ( $i = $last_number; $i < ($last_number + fitcash_get_option('fitcash_count_post_first_import')); $i++ )
   {
-    echo '<div id="message" class="updated fade">';
-    echo '<strong>' . __('Successfully imported from ', 'fitcash') . $url_display . __(', but didn\'t found any new posts.', 'fitcash') . '</strong></div>';
+    if ( empty($h_text[$i]) OR empty($f_text[$i]) )
+      $spinning_text_flag = 1;
   }
-  else if ( $no_of_imported_posts > 0 )
+  if ( $spinning_text_flag )
   {
-    echo '<div id="message" class="updated fade">';
-    echo '<strong>' . __('Successfully imported ', 'fitcash') . $no_of_imported_posts . __(' posts from ', 'fitcash') . $url_display . '.</strong></div>';
+    if ( $def_text_flag )
+      $error_flag = 1;
+  }
+
+  if ( !$error_flag )
+  {
+    $no_of_imported_posts = fitcash_importArticles( $url, $jv_profit_center_id, $blog_user_for_import, fitcash_get_option('fitcash_count_post_first_import') );
+    
+    $url_display = substr( $url, strpos( $url, 'http://') + 7, (strpos( $url, '/', (strpos($url, 'http://') + 8)) - (strpos($url, 'http://') + 7)) );
+    if ( $no_of_imported_posts == 0 )
+    {
+      echo '<div id="message" class="updated fade">';
+      echo '<strong>' . __('Successfully imported from ', 'fitcash') . $url_display . __(', but didn\'t found any new posts.', 'fitcash') . '</strong></div>';
+    }
+    else if ( $no_of_imported_posts > 0 )
+    {
+      echo '<div id="message" class="updated fade">';
+      echo '<strong>' . __('Successfully imported ', 'fitcash') . $no_of_imported_posts . __(' posts from ', 'fitcash') . $url_display . '.</strong></div>';
+    }
+  }
+  else
+  {
+    echo '<div id="message" class="error fade">';
+    echo '<strong>' . __('Error: Please fill the text fields for the default Header/Footer Text and/or Spinning Header/Footer Texts !', 'fitcash') . '</strong></div>';
   }
 
   return;    
@@ -263,7 +294,7 @@ function fitcash_importArticles($url,$jv_profit_center_id,$blog_user_id,$no_of_a
       fitcash_update_option( 'fitcash_spinning_last_number', $fitcash_spinning_last_number);
 
       //  check if spinning text is set
-      if ( $fitcash_spinning_footer_text[$indx] != '' AND $fitcash_spinning_header_text[$indx] != '' )
+      if ( !empty($fitcash_spinning_footer_text[$indx]) AND !empty($fitcash_spinning_header_text[$indx]) )
       {
         $fitcash_header_text = $fitcash_spinning_header_text[$indx];
         $fitcash_footer_text = $fitcash_spinning_footer_text[$indx];

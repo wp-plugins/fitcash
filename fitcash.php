@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: FitCash 
-Plugin URI: http://jonbensonfitness.com/wp-plugin
+Plugin URI: http://jvprofitcenter.com/blog/fitcash
 Description: Import posts/articles from Jon Benson Fitness&copy; Host Blog to your blog via last rss feed. WP Cron settings for automatical import in regular intervals.
-Version: 1.2.3
+Version: 1.2.4
 Author: Jon Benson
 Author URI: http://jonbensonfitness.com
 License: GPL2
@@ -16,8 +16,23 @@ define('FITPDIR', WP_PLUGIN_DIR . '/' . str_replace(basename( __FILE__),"",plugi
 
 
 // relative path to WP_PLUGIN_DIR where the translation files will sit:
-$plugin_path = plugin_basename( dirname( __FILE__ ) .'/lang' );
-load_plugin_textdomain( 'fitcash', '', $plugin_path );
+$plugin_path = dirname(plugin_basename(__FILE__)) . '/lang';
+load_plugin_textdomain( 'fitcash', false, $plugin_path );
+
+
+if ( function_exists('load_plugin_textdomain') ) 
+{
+  if ( !defined('WP_PLUGIN_DIR') ) 
+  {
+    load_plugin_textdomain( 'fitcash', str_replace( ABSPATH, '', dirname(__FILE__)) . '/lang');
+  } 
+  else 
+  {
+    load_plugin_textdomain( 'fitcash', false, dirname(plugin_basename(__FILE__)) . '/lang');
+  }
+}
+
+
 
 include_once( dirname(__FILE__) . '/fitcash-lastRSS.php');
 include_once( dirname(__FILE__) . '/fitcash-functions.php');
