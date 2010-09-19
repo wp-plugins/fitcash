@@ -268,11 +268,16 @@ function fitcash_set_option_defaults()
      );
 
   $fitcash_def_footer = array(
-     '[ I hope you {var25} today&#039;s guest editorial by {var26} DO check out his latest book(s) using the links found in this blog or the banner below. Highly recommended! ]',
+     '[ I hope you {var26} today&#039;s guest editorial by {var22} DO check out his latest book(s) using the links found in this blog or the banner below. Highly recommended! ]',
      '[ Learn more about Jon and his methods by clicking on the links and/or banner in the article above {var24}... and get yourself started on a {var25} path to body transformation! ]',
      '[ Like what you read today? Then {var26} Jon Benson&#039;s latest by clicking on the links or banners in this article {var24}... ]',
      '[ More from Jon Benson in upcoming blogs... but you can get more info and some freebies by {var8} Jon&#039;s pages found in the article above or the banner below. Thanks! ]',
-     '[ Want to {var9} even more fat-loss and body transformation info? Then {var13} Jon&#039;s page by clicking on the links in the article above (or in the banner below) to get started today on reshaping YOUR body! ]'
+     '[ Want to {var9} even more fat-loss and body transformation info? Then {var13} Jon&#039;s page by clicking on the links in the article above (or in the banner below) to get started today on reshaping YOUR body! ]',
+     '[ My thoughts on this article: Jon is {var27} If you want to {var9} then {var26} the pages referenced in this article. Thanks! ]',
+     '[ After this I bet you {var28}... and you can by {var29} the links in this post. Trust me: Jon has some {var14} stuff that you don't want to miss! ]',
+     '[ Another {var11} article by Jon Benson... and there's more: {var13} to the pages in this post now and {var30} a lot more tips on weight loss, fitness and motivation. Enjoy! ]',
+     '[ Some really {var25} stuff in this post, folks. And you should visit the pages above {var24} if you want to {var31}! ]',
+     '[ I cannot speak highly enough about Jon and his {var32} on fitness and weight loss. Believe me, they WORK. I hope you {var22} this post and want to see more. Here's my tip: {var26} the pages in this article today. Your body will thank you! ]'
      );
 
   $fitcash_def_vars = array(
@@ -301,7 +306,13 @@ function fitcash_set_option_defaults()
      22 => array( 'name' => 'var23', 'values' => '{Jon Benson.},{fitness guru Jon Benson.},{fat-loss expert Jon Benson.}', 'value' => array() ),
      23 => array( 'name' => 'var24', 'values' => '{today},{immediately},{now}', 'value' => array() ),
      24 => array( 'name' => 'var25', 'values' => '{solid},{fast-track},{proven}', 'value' => array() ),
-     25 => array( 'name' => 'var26', 'values' => '{visit},{jump over to},{take a look at}', 'value' => array() )
+     25 => array( 'name' => 'var26', 'values' => '{visit},{jump over to},{take a look at}', 'value' => array() ),
+     26 => array( 'name' => 'var27', 'values' => '{right on the money.},{really on to something here.},{saying what needs to be said.},{telling it like it is.}', 'value' => array() ),
+     27 => array( 'name' => 'var28', 'values' => '{want to learn more},{would love to see more},{are wanting to read more}', 'value' => array() ),
+     28 => array( 'name' => 'var29', 'values' => '{clicking on},{visiting},{checking out}', 'value' => array() ),
+     29 => array( 'name' => 'var30', 'values' => '{pick up},{grab},{swipe},{get (for free)}', 'value' => array() ),
+     30 => array( 'name' => 'var31', 'values' => '{learn more about reshaping your body},{discover more about weight loss and body-shaping},{find out more about Jon's weight loss and fitness tips}', 'value' => array() ),
+     31 => array( 'name' => 'var32', 'values' => '{unique take},{unusual slant},{unorthodox but effective tips},{from-the-hip take}', 'value' => array() )
      );
 
   $default_options['fitcash_spinning_header_text'] = $fitcash_def_header;
