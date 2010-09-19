@@ -103,7 +103,7 @@ function fitcash_plugin_print_option_page()
   '              <tr><th class="fitcash_option_left_part"><label for="fitcash_post_footer_text">Edit the Default Article Footer</label></th>' . "\n" .
   '                  <td><b><textarea rows="3" cols="45" id="fitcash_post_footer_text" name="fitcash_post_footer_text">' . html_entity_decode($fitcash_post_footer_text, ENT_QUOTES) . '</textarea></b></td>' . "\n" .
   '              </tr>' . "\n" .
-  '              <tr><th class="fitcash_option_left_part"><label for="">How Frequently Do You Want New Articles Imported</label></th>' . "\n" .
+  '              <tr><th class="fitcash_option_left_part"><label for="">' . __('How Frequently Do You Want New Articles Imported', 'fitcash') . '</label></th>' . "\n" .
   '                  <td><ul><li>' . "\n";
 
   foreach( $arr_frequency as $intervall => $value)
@@ -119,7 +119,7 @@ function fitcash_plugin_print_option_page()
   echo
   '              </li></ul></td>' . "\n" .
   '              </tr>' . "\n" .
-  '              <tr><th class="fitcash_option_left_part"><label for="">Set New Articles On Import To... </label></th>' . "\n" .
+  '              <tr><th class="fitcash_option_left_part"><label for="">' . __('Set New Articles On Import To... ', 'fitcash') . '</label></th>' . "\n" .
   '                <td><ul><li>' . "\n";
 
   foreach( $arr_import_as_options as $key=>$value )
@@ -135,7 +135,7 @@ function fitcash_plugin_print_option_page()
   echo
   '              </li></ul></td>' . "\n" .
   '              </tr>' . "\n" .
-  '              <tr><th class="fitcash_option_left_part"><label for="">Select the Categories For Imported Articles</label></th>' . "\n" .
+  '              <tr><th class="fitcash_option_left_part"><label for="">' . __('Select the Categories For Imported Articles', 'fitcash') . '</label></th>' . "\n" .
   '                  <td><select name="fitcash_import_cats_select[]" id="fitcash_import_cats_select_tag" multiple="multiple" size="5">' . "\n";
 
   foreach( $categories as $cat)
@@ -167,7 +167,7 @@ function fitcash_plugin_print_option_page()
   '                   <input type="submit" class="button-primary" value="Add Category" id="fitcash_add_cat_btn" name="fitcash_add_cat_btn" onclick="document.getElementById(nameofDivWait).style.display=\'inline\';this.form.submit();" /><br />' . "\n" .    
   '                   </td>' . "\n" .
   '              </tr>' . "\n" .
-  '              <tr><th class="fitcash_option_left_part"><label for="">Number Of Articles For First Import:</label></th>' . "\n" .
+  '              <tr><th class="fitcash_option_left_part"><label for="">' . __('Number Of Articles For First Import:', 'fitcash') . '</label></th>' . "\n" .
   '                  <td><select id="fitcash_count_post_first_import_select" name="fitcash_count_post_first_import">';
 
   for ( $i = 0; $i < 5; $i++ )
