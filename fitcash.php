@@ -3,7 +3,7 @@
 Plugin Name: FitCash 
 Plugin URI: http://jvprofitcenter.com/blog/fitcash
 Description: Import posts/articles from Jon Benson Fitness&copy; Host Blog to your blog via last rss feed. WP Cron settings for automatical import in regular intervals.
-Version: 1.2.4
+Version: 1.2.5
 Author: Jon Benson
 Author URI: http://jonbensonfitness.com
 License: GPL2
@@ -134,6 +134,12 @@ function fitcash_init_method()
     $_COOKIE    = array_map( 'stripslashes_deep', $_COOKIE );
     $_REQUEST   = array_map( 'stripslashes_deep', $_REQUEST );
   }
+
+  wp_enqueue_script('dashboard');
+  wp_enqueue_script('postbox');
+  wp_enqueue_script('jquery-ui-resizable');
+  wp_enqueue_script('jquery-ui-droppable');
+  wp_enqueue_script('wp-ajax-response');
 
   return;
 }
@@ -274,10 +280,10 @@ function fitcash_set_option_defaults()
      '[ More from Jon Benson in upcoming blogs... but you can get more info and some freebies by {var8} Jon&#039;s pages found in the article above or the banner below. Thanks! ]',
      '[ Want to {var9} even more fat-loss and body transformation info? Then {var13} Jon&#039;s page by clicking on the links in the article above (or in the banner below) to get started today on reshaping YOUR body! ]',
      '[ My thoughts on this article: Jon is {var27} If you want to {var9} then {var26} the pages referenced in this article. Thanks! ]',
-     '[ After this I bet you {var28}... and you can by {var29} the links in this post. Trust me: Jon has some {var14} stuff that you don't want to miss! ]',
-     '[ Another {var11} article by Jon Benson... and there's more: {var13} to the pages in this post now and {var30} a lot more tips on weight loss, fitness and motivation. Enjoy! ]',
+     '[ After this I bet you {var28}... and you can by {var29} the links in this post. Trust me: Jon has some {var14} stuff that you don&#039;t want to miss! ]',
+     '[ Another {var11} article by Jon Benson... and there&#039;s more: {var13} to the pages in this post now and {var30} a lot more tips on weight loss, fitness and motivation. Enjoy! ]',
      '[ Some really {var25} stuff in this post, folks. And you should visit the pages above {var24} if you want to {var31}! ]',
-     '[ I cannot speak highly enough about Jon and his {var32} on fitness and weight loss. Believe me, they WORK. I hope you {var22} this post and want to see more. Here's my tip: {var26} the pages in this article today. Your body will thank you! ]'
+     '[ I cannot speak highly enough about Jon and his {var32} on fitness and weight loss. Believe me, they WORK. I hope you {var22} this post and want to see more. Here&#039;s my tip: {var26} the pages in this article today. Your body will thank you! ]'
      );
 
   $fitcash_def_vars = array(
@@ -311,7 +317,7 @@ function fitcash_set_option_defaults()
      27 => array( 'name' => 'var28', 'values' => '{want to learn more},{would love to see more},{are wanting to read more}', 'value' => array() ),
      28 => array( 'name' => 'var29', 'values' => '{clicking on},{visiting},{checking out}', 'value' => array() ),
      29 => array( 'name' => 'var30', 'values' => '{pick up},{grab},{swipe},{get (for free)}', 'value' => array() ),
-     30 => array( 'name' => 'var31', 'values' => '{learn more about reshaping your body},{discover more about weight loss and body-shaping},{find out more about Jon's weight loss and fitness tips}', 'value' => array() ),
+     30 => array( 'name' => 'var31', 'values' => '{learn more about reshaping your body},{discover more about weight loss and body-shaping},{find out more about Jon&#039;s weight loss and fitness tips}', 'value' => array() ),
      31 => array( 'name' => 'var32', 'values' => '{unique take},{unusual slant},{unorthodox but effective tips},{from-the-hip take}', 'value' => array() )
      );
 

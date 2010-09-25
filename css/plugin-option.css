@@ -1,3 +1,18 @@
+#plugin-main
+{
+  width:  69%;
+}
+
+#plugin-news
+{
+  width:  29%;
+}
+
+.meta-box-sortables
+{
+  margin: 0px 5px;
+}
+
 .margintb
 {
   margin: 5px 0 5px 0;
@@ -13,6 +28,11 @@
   text-decoration: none;
 }
 
+.postbox .inside
+{
+  position:  relative;
+  margin:    10px;
+}
 
 .float-left
 {
@@ -36,7 +56,7 @@
   background: transparent url('http://api.ning.com/icons/appatar/1311988?default=1311988&width=32&height=32') no-repeat top left;
 }
 
-DIV.postbox#jbf-settings DIV.inside
+#fitcash-settings .inside
 {
   background: url('http://api.ning.com/icons/appatar/1311988?default=1311988&width=32&height=32') no-repeat right bottom;
 }

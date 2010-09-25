@@ -26,34 +26,6 @@ class fitcash_lastRSS
 	// -------------------------------------------------------------------
 	function Get ($rss_url) {
             $result = $this->Parse($rss_url);
-            /*
-		// If CACHE ENABLED
-		if ($this->cache_dir != '') {
-			$cache_file = $this->cache_dir . '/rsscache_' . md5($rss_url);
-			$timedif = @(time() - filemtime($cache_file));
-			if ($timedif < $this->cache_time) {
-				// cached file is fresh enough, return cached array
-				$result = unserialize(join('', file($cache_file)));
-				// set 'cached' to 1 only if cached file is correct
-				if ($result) $result['cached'] = 1;
-			} else {
-				// cached file is too old, create new
-				$result = $this->Parse($rss_url);
-				$serialized = serialize($result);
-				if ($f = @fopen($cache_file, 'w')) {
-					fwrite ($f, $serialized, strlen($serialized));
-					fclose($f);
-				}
-				if ($result) $result['cached'] = 0;
-			}
-		}
-		// If CACHE DISABLED >> load and parse the file directly
-		else {
-			$result = $this->Parse($rss_url);
-			if ($result) $result['cached'] = 0;
-		}
-		// return resul
-                */
 		return $result;
 	}
 	

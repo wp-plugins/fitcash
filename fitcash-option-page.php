@@ -56,41 +56,13 @@ function fitcash_plugin_print_option_page()
   wp_nonce_field('fitcash_import_posts');
 
   echo
-  '  <div class="metabox-holder has-right-sidebar" id="poststuff">' . "\n" .
-  '    <div class="inner-sidebar float-right">' . "\n" .
-  '      <div class="meta-box-sortabless ui-sortable" id="side-sortables">' . "\n" .
-  '        <div class="postbox" id="fitcash_info">' . "\n" .
-  '          <h3 class="hndle">Suggested Affiliate Tools</h3>' . "\n" .
-  '          <div class="inside">' . "\n" .
-  '            <ul>' . "\n" .
-  '              <li><img class="img-link-ico" src="' . FITPURL . 'img/jv_profit_center_favicon.jpg" alt="JV Profit Center Logo" /><a class="link-extern" href="http://www.jvprofitcenter.com" target="_blank" title="JV Profit Center">JV Profit Center</a></li>' . "\n" .
-  '            </ul>' . "\n" .
-  '            <hr />' . "\n" .
-  '            <h4>Let\'s Get Social!</h4>' . "\n" .    
-  '            <p>This incredible affiliate tool shows you how you can drive tons of cheap traffic to any offer (including your blog!) using social media such as Facebook.</p>' . "\n" .
-  '            <ul>' . "\n" .
-  '              <li><img class="img-link-ico" src="http://www.letsgetsocial.com/favicon.ico" alt="Let\'s Get Social!" /><a class="link-extern" href="https://touchstone.infusionsoft.com/go/lgs/jb20/" target="_blank" title="Let\'s Get Social!">Click here to Read More</a></li>' . "\n" .
-  '            </ul>' . "\n" .
-  '            <hr />' . "\n" .
-  '          </div>' . "\n" .
-  '        </div>' . "\n" .
-  '        <div class="postbox" id="fitcash_links">' . "\n" .
-  '          <h3 class="hndle">Links</h3>' . "\n" .
-  '          <div class="inside">' . "\n" .
-  '            <ul>' . "\n" .
-  '              <li><img class="img-link-ico" src="http://www.clickbank.com/favicon.ico" alt="Clickbank.com Logo" /><a class="link-extern" href="http://www.clickbank.com" target="_blank" title="Clickbank.com">Clickbank.com</a></li>' . "\n" .
-  '              <li><img class="img-link-ico" src="http://www.jonbensonforum.com/favicon.ico" alt="JonBensonFitness.com Logo" /><a class="link-extern" href="http://www.jonbensonfitness.com" target="_blank" title="JBF Product Support Center">JBF Product Support Center</a></li>' . "\n" .
-//  '              <li><img class="img-link-ico" src="http://www.jonbensonfitness.com/favicon.ico" alt="JonBensonFitness.com Logo" /><a class="link-extern" href="http://www.jonbensonfitness.com" target="_blank" title="JBF Product Support Center">JBF Product Support Center</a></li>' . "\n" .
-  '            </ul>' . "\n" .
-  '          </div>' . "\n" .
-  '        </div>' . "\n" .
-  '      </div>' . "\n" .
-  '    </div>' . "\n" .
-  '    <div class="has-sidebar fitcash-padded float_left">' . "\n" .
-  '      <div class="has-sidebar-content" id="post-body-content">' . "\n" .
-  '        <div class="meta-box-sortabless">' . "\n" .
-  '          <div class="postbox float-left" id="fitcash-settings">' . "\n" .
-  '            <h3>' . __('Settings', 'fitcash') . '</h3>' . "\n" .
+  '  <div class="metabox-holder has-right-sidebar" id="plugin-panel-widgets">' . "\n" .
+  '    <div class="postbox-container" id="plugin-main">' . "\n" .
+  '      <div class="has-sidebar-content">' . "\n" .
+  '        <div class="meta-box-sortables ui-sortable" id="normal-sortables" unselectable="on">' . "\n" .
+  '          <div class="postbox ui-droppable" id="fitcash-settings">' . "\n" .
+  '            <div title="' . __('Zum umschalten klicken', 'fitcash') . '" class="handlediv"><br /></div>' . "\n" .
+  '            <h3 class="hndle">' . __('Settings', 'fitcash') . '</h3>' . "\n" .
   '            <div class="inside">' . "\n" .
   '              <b>Import from JonBensonFitness.com</b>' . "\n" .
   '              <table class="form-table">' . "\n" .
@@ -192,8 +164,9 @@ function fitcash_plugin_print_option_page()
   '            <div class="div-wait" id="divwait"><img src="' . FITPURL . 'img/loading.gif" /></div>' . "\n" .
   '            <input type="submit" class="button-primary" value="Import From JonBensonFitness.com" id="fitcash_import_posts_btn" name="fitcash_import_btn" onclick="document.getElementById(nameofDivWait).style.display=\'inline\';this.form.submit();" />' . "\n" .    
   '          </div>' . "\n" .
-  '          <div class="postbox float-left" id="spinning-text-div">' . "\n" .
-  '            <h3>' . __('Spinning Text - Create Unique Content for the Web !', 'fitcash') . '</h3>' . "\n" .
+  '          <div class="postbox ui-droppable" id="spinning-text-div">' . "\n" .
+  '            <div title="' . __('Zum umschalten klicken', 'fitcash') . '" class="handlediv"><br /></div>' . "\n" .
+  '            <h3 class="hndle">' . __('Spinning Text - Create Unique Content for the Web !', 'fitcash') . '</h3>' . "\n" .
   '            <div class="inside">' . "\n" .
   '              <p>' . "\n" .
   '                ' . __('With spinning text you can create unique content on your blog posts that will make each article imported more search engine-friendly. The headers and footers below will be automatically added at random to each imported article.', 'fitcash') . "\n" .
@@ -227,8 +200,9 @@ function fitcash_plugin_print_option_page()
   '            <div class="div-wait" id="divwait0"><img src="' . FITPURL . 'img/loading.gif" /></div>' . "\n" .
   '            <input type="submit" class="button-secondary" value="Save Changes" id="fitcash_save_btn_above" name="fitcash_update_options_btn" onclick="document.getElementById(nameofDivWait).style.display=\'inline\';this.form.submit();" />' . "\n" .
   '          </div>' . "\n" .
-  '          <div class="postbox float-left" id="spinning-vars-div">' . "\n" .
-  '            <h3>' . __('Randomly Changed Text Variables - Create Unique Content for the Web !', 'fitcash') . '</h3>' . "\n" .
+  '          <div class="postbox ui-droppable" id="spinning-vars-div">' . "\n" .
+  '            <div title="' . __('Zum umschalten klicken', 'fitcash') . '" class="handlediv"><br /></div>' . "\n" .
+  '            <h3 class="hndle">' . __('Randomly Changed Text Variables - Create Unique Content for the Web !', 'fitcash') . '</h3>' . "\n" .
   '            <div class="inside">' . "\n" .
   '              <p>' . "\n" .
   '                ' . __('With this feature you can create your own dynamic variables, which will be automatically added to your headers and footers and changed randomly for even greater search engine optimization.', 'fitcash') . '<br /><br />' .
@@ -272,6 +246,37 @@ function fitcash_plugin_print_option_page()
   '          <div class="submit">' . "\n" .
   '            <div class="div-wait" id="divwait2"><img src="' . FITPURL . 'img/loading.gif" /></div>' . "\n" .
   '            <input type="submit" class="button-secondary" value="Save Changes" id="fitcash_save_btn_below" name="fitcash_update_options_btn" onclick="document.getElementById(nameofDivWait).style.display=\'inline\';this.form.submit();" />' . "\n" .
+  '          </div>' . "\n" .
+  '        </div>' . "\n" .
+  '      </div>' . "\n" .
+  '    </div>' . "\n" .
+  '    <div class="postbox-container" id="plugin-news">' . "\n" .
+  '      <div class="meta-box-sortables ui-sortable" id="side-sortables" unselectable="on">' . "\n" .
+  '        <div class="postbox ui-droppable" id="fitcash_info">' . "\n" .
+  '          <div title="' . __('Zum umschalten klicken', 'fitcash') . '" class="handlediv"><br /></div>' . "\n" .
+  '          <h3 class="hndle">Suggested Affiliate Tools</h3>' . "\n" .
+  '          <div class="inside">' . "\n" .
+  '            <ul>' . "\n" .
+  '              <li><img class="img-link-ico" src="' . FITPURL . 'img/jv_profit_center_favicon.jpg" alt="JV Profit Center Logo" /><a class="link-extern" href="http://www.jvprofitcenter.com" target="_blank" title="JV Profit Center">JV Profit Center</a></li>' . "\n" .
+  '            </ul>' . "\n" .
+  '            <hr />' . "\n" .
+  '            <h4>Let\'s Get Social!</h4>' . "\n" .    
+  '            <p>This incredible affiliate tool shows you how you can drive tons of cheap traffic to any offer (including your blog!) using social media such as Facebook.</p>' . "\n" .
+  '            <ul>' . "\n" .
+  '              <li><img class="img-link-ico" src="http://www.letsgetsocial.com/favicon.ico" alt="Let\'s Get Social!" /><a class="link-extern" href="https://touchstone.infusionsoft.com/go/lgs/jb20/" target="_blank" title="Let\'s Get Social!">Click here to Read More</a></li>' . "\n" .
+  '            </ul>' . "\n" .
+  '            <hr />' . "\n" .
+  '          </div>' . "\n" .
+  '        </div>' . "\n" .
+  '        <div class="postbox ui-droppable" id="fitcash_links">' . "\n" .
+  '          <div title="' . __('Zum umschalten klicken', 'fitcash') . '" class="handlediv"><br /></div>' . "\n" .
+  '          <h3 class="hndle">Links</h3>' . "\n" .
+  '          <div class="inside">' . "\n" .
+  '            <ul>' . "\n" .
+  '              <li><img class="img-link-ico" src="http://www.clickbank.com/favicon.ico" alt="Clickbank.com Logo" /><a class="link-extern" href="http://www.clickbank.com" target="_blank" title="Clickbank.com">Clickbank.com</a></li>' . "\n" .
+  '              <li><img class="img-link-ico" src="http://www.jonbensonforum.com/favicon.ico" alt="JonBensonFitness.com Logo" /><a class="link-extern" href="http://www.jonbensonfitness.com" target="_blank" title="JBF Product Support Center">JBF Product Support Center</a></li>' . "\n" .
+//  '              <li><img class="img-link-ico" src="http://www.jonbensonfitness.com/favicon.ico" alt="JonBensonFitness.com Logo" /><a class="link-extern" href="http://www.jonbensonfitness.com" target="_blank" title="JBF Product Support Center">JBF Product Support Center</a></li>' . "\n" .
+  '            </ul>' . "\n" .
   '          </div>' . "\n" .
   '        </div>' . "\n" .
   '      </div>' . "\n" .
