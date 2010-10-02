@@ -8,6 +8,14 @@
   width:  29%;
 }
 
+.label-hb
+{
+  position:  relative;
+  min-width: 5em;
+  display:   inline;
+  float:     left;
+}
+
 .meta-box-sortables
 {
   margin: 0px 5px;
@@ -32,6 +40,30 @@
 {
   position:  relative;
   margin:    10px;
+}
+
+#plugin-main .postbox .inside .submit
+{
+  margin:  5px 0px 0px 0px;
+  padding: 0px;
+  float:   none;
+}
+
+#fitcash_host_blog_select
+{
+  min-width:     10em;
+}
+
+.one-row
+{
+  position:  relative;
+  display:   inline;
+  float:     left;
+}
+
+.clear
+{
+  clear:     both;
 }
 
 .float-left

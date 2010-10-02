@@ -1,5 +1,6 @@
 <?php
 
+global $arr_fitcash_host_blog_type;
 
 class fitcash_lastRSS 
 {
@@ -21,13 +22,14 @@ class fitcash_lastRSS
 	var $imagetags = array('title', 'url', 'link', 'width', 'height');
 	var $textinputtags = array('title', 'description', 'name', 'link');
 
-	// -------------------------------------------------------------------
-	// Parse RSS file and returns associative array.
-	// -------------------------------------------------------------------
-	function Get ($rss_url) {
-            $result = $this->Parse($rss_url);
-		return $result;
-	}
+  // -------------------------------------------------------------------
+  // Parse RSS file and returns associative array.
+  // -------------------------------------------------------------------
+  function Get ($rss_url) 
+  {
+    $result = $this->Parse($rss_url);
+    return $result;
+  }
 	
 	// -------------------------------------------------------------------
 	// Modification of preg_match(); return trimed field with index 1
@@ -79,7 +81,7 @@ class fitcash_lastRSS
         
          function get_rss_content($rss_url){
                   // Set up the CURL object
-            $ch = curl_init($rss_ur );
+            $ch = curl_init($rss_url);
             
             // Fake out the User Agent
             curl_setopt( $ch, CURLOPT_USERAGENT, "Internet Explorer" );
@@ -96,67 +98,102 @@ class fitcash_lastRSS
             ob_end_clean();
             return $str;
         }
-	function Parse ($rss_url) {
-		// Open and load RSS file
-		if ($f = @fopen($rss_url, 'r')) {
-			$rss_content = '';
-			while (!feof($f)) {
-				$rss_content .= fgets($f, 4096);
-			}
-			fclose($f);
 
-			// Parse document encoding
-			$result['encoding'] = $this->my_preg_match("'encoding=[\'\"](.*?)[\'\"]'si", $rss_content);
-			// if document codepage is specified, use it
-			if ($result['encoding'] != '')
-				{ $this->rsscp = $result['encoding']; } // This is used in my_preg_match()
-			// otherwise use the default codepage
-			else
-				{ $this->rsscp = $this->default_cp; } // This is used in my_preg_match()
+  function Parse ($rss_url) 
+  {
+    $rss_content = '';
+    // Open and load RSS file
+    if ( $rss_content = file_getContents($rss_url) )
+    {
+      // Parse document encoding
+      $result['encoding'] = $this->my_preg_match("'encoding=[\'\"](.*?)[\'\"]'si", $rss_content);
 
-			// Parse CHANNEL info
-			preg_match("'<channel.*?>(.*?)</channel>'si", $rss_content, $out_channel);
-			foreach($this->channeltags as $channeltag)
-			{
-				$temp = $this->my_preg_match("'<$channeltag.*?>(.*?)</$channeltag>'si", $out_channel[1]);
-				if ($temp != '') $result[$channeltag] = $temp; // Set only if not empty
-			}
-			// If date_format is specified and lastBuildDate is valid
-			if ($this->date_format != '' && ($timestamp = strtotime($result['lastBuildDate'])) !==-1) {
-						// convert lastBuildDate to specified date format
-						$result['lastBuildDate'] = date($this->date_format, $timestamp);
-			}
+      // get document type
+      if ( !(strpos( $rss_content, '<rss version="2.0"') === false) )
+        $result['type'] = 'feed';
+      if ( !(strpos( $rss_content, '<feed') === false) )
+        $result['type'] = 'atom';
 
-			// Parse TEXTINPUT info
-			preg_match("'<textinput(|[^>]*[^/])>(.*?)</textinput>'si", $rss_content, $out_textinfo);
+      // if document codepage is specified, use it
+      if ($result['encoding'] != '')
+      { 
+        // This is used in my_preg_match()
+        $this->rsscp = $result['encoding']; 
+      } 
+      // otherwise use the default codepage
+      else
+      { 
+        $this->rsscp = $this->default_cp; 
+      } // This is used in my_preg_match()
+
+      // Parse CHANNEL info
+      preg_match("'<channel.*?>(.*?)</channel>'si", $rss_content, $out_channel);
+      foreach($this->channeltags as $channeltag)
+      {
+        $temp = $this->my_preg_match("'<$channeltag.*?>(.*?)</$channeltag>'si", $out_channel[1]);
+        if ($temp != '') 
+          $result[$channeltag] = $temp; // Set only if not empty
+      }
+
+      // If date_format is specified and lastBuildDate is valid
+      if ($this->date_format != '' && ($timestamp = strtotime($result['lastBuildDate'])) !==-1) 
+      {
+	// convert lastBuildDate to specified date format
+	$result['lastBuildDate'] = date($this->date_format, $timestamp);
+      }
+
+      // Parse TEXTINPUT info
+      preg_match("'<textinput(|[^>]*[^/])>(.*?)</textinput>'si", $rss_content, $out_textinfo);
 				// This a little strange regexp means:
 				// Look for tag <textinput> with or without any attributes, but skip truncated version <textinput /> (it's not beggining tag)
-			if (isset($out_textinfo[2])) {
-				foreach($this->textinputtags as $textinputtag) {
+      if (isset($out_textinfo[2])) 
+      {
+        foreach($this->textinputtags as $textinputtag) 
+        {
 					$temp = $this->my_preg_match("'<$textinputtag.*?>(.*?)</$textinputtag>'si", $out_textinfo[2]);
 					if ($temp != '') $result['textinput_'.$textinputtag] = $temp; // Set only if not empty
-				}
-			}
-			// Parse IMAGE info
-			preg_match("'<image.*?>(.*?)</image>'si", $rss_content, $out_imageinfo);
-			if (isset($out_imageinfo[1])) {
-				foreach($this->imagetags as $imagetag) {
+        }
+      }
+
+      // Parse IMAGE info
+      preg_match("'<image.*?>(.*?)</image>'si", $rss_content, $out_imageinfo);
+      if (isset($out_imageinfo[1])) 
+      {
+        foreach($this->imagetags as $imagetag) 
+        {
 					$temp = $this->my_preg_match("'<$imagetag.*?>(.*?)</$imagetag>'si", $out_imageinfo[1]);
 					if ($temp != '') $result['image_'.$imagetag] = $temp; // Set only if not empty
-				}
-			}
-			// Parse ITEMS
-			preg_match_all("'<entry(| .*?)>(.*?)</entry>'si", $rss_content, $items);
-			$rss_items = $items[2];
-			$i = 0;
-			$result['items'] = array(); // create array even if there are no items
-			foreach($rss_items as $rss_item) {
-				// If number of items is lower then limit: Parse one item
-				if ($i < $this->items_limit || $this->items_limit == 0) {
-					foreach($this->itemtags as $itemtag) {
-						$temp = $this->my_preg_match("'<$itemtag.*?>(.*?)</$itemtag>'si", $rss_item);
-						if ($temp != '') $result['items'][$i][$itemtag] = htmlspecialchars($temp); // Set only if not empty
-					}
+        }
+      }
+
+      // Parse ITEMS
+      switch( $result['type'] )
+      {
+        case 'atom':
+          preg_match_all("'<entry(| .*?)>(.*?)</entry>'si", $rss_content, $items);
+          break;
+        case 'feed':
+          preg_match_all("'<item(| .*?)>(.*?)</item>'si", $rss_content, $items);
+          break;
+        default:
+          preg_match_all("'<entry(| .*?)>(.*?)</entry>'si", $rss_content, $items);
+          break;
+      }
+      $rss_items = $items[2];
+      $i = 0;
+      $result['items'] = array(); // create array even if there are no items
+
+      foreach($rss_items as $rss_item) 
+      {
+        // If number of items is lower then limit: Parse one item
+        if ($i < $this->items_limit || $this->items_limit == 0) 
+        {
+          foreach($this->itemtags as $itemtag) 
+          {
+            $temp = $this->my_preg_match("'<$itemtag.*?>(.*?)</$itemtag.*?>'si", $rss_item);
+            if ($temp != '') 
+              $result['items'][$i][$itemtag] = htmlspecialchars($temp); // Set only if not empty
+          }
 					// Strip HTML tags and other bullshit from DESCRIPTION
 					if ($this->stripHTML && $result['items'][$i]['description'])
 						$result['items'][$i]['description'] = strip_tags($this->unhtmlentities(strip_tags($result['items'][$i]['description'])));
@@ -170,17 +207,62 @@ class fitcash_lastRSS
 					}
 					// Item counter
 					$i++;
-				}
-			}
+        }
+      }
 
-			$result['items_count'] = $i;
-			return $result;
-		}
-		else // Error in opening return False
-		{
-			return False;
-		}
-	}
+      $result['items_count'] = $i;
+      return $result;
+    }
+    else // Error in opening return False
+    {
+      return False;
+    }
+  }
+}
+
+
+function file_getContents($url) 
+{
+  // URL zerlegen
+  $parsedurl = @parse_url($url);
+  // Host ermitteln, ungültigen Aufruf abfangen
+  if (empty($parsedurl['host']))
+    return null;
+  $host = $parsedurl['host'];
+  // Pfadangabe ermitteln
+  if (empty($parsedurl['path']))
+    $documentpath = '/';
+  else
+    $documentpath = $parsedurl['path'];
+  // Parameter ermitteln
+  if (!empty($parsedurl['query'])) 
+    $documentpath .= '?'.$parsedurl['query'];
+  // Port ermitteln
+  if (!empty($parsedurl['port']))
+    $port = $parsedurl['port'];
+  else
+    $port = 80;
+  // Socket öffnen
+  $fp = fsockopen ($host, $port, $errno, $errstr, 30);
+  if (!$fp)
+    return null;
+  // Request senden
+    fputs ($fp, "GET {$documentpath} HTTP/1.0\r\nHost: {$host}\r\n\r\n");
+  // Header auslesen
+  do 
+  {
+    $line = chop(fgets($fp));
+  } while (!empty($line) and !feof($fp));
+  // Daten auslesen
+  $result = '';
+  while (!feof($fp)) 
+  {
+    $result .= fgets($fp);
+  }
+  // Socket schliessen
+  fclose($fp);
+  // Ergebnis zurückgeben
+  return $result;
 }
 
 ?>

@@ -3,7 +3,7 @@
 Plugin Name: FitCash 
 Plugin URI: http://jvprofitcenter.com/blog/fitcash
 Description: Import posts/articles from Jon Benson Fitness&copy; Host Blog to your blog via last rss feed. WP Cron settings for automatical import in regular intervals.
-Version: 1.2.5
+Version: 1.3.0
 Author: Jon Benson
 Author URI: http://jonbensonfitness.com
 License: GPL2
@@ -13,7 +13,6 @@ global $wpdb;
 
 define('FITPURL', WP_PLUGIN_URL . '/' . str_replace(basename( __FILE__),"",plugin_basename(__FILE__)) );
 define('FITPDIR', WP_PLUGIN_DIR . '/' . str_replace(basename( __FILE__),"",plugin_basename(__FILE__)) );
-
 
 // relative path to WP_PLUGIN_DIR where the translation files will sit:
 $plugin_path = dirname(plugin_basename(__FILE__)) . '/lang';
@@ -45,9 +44,14 @@ add_action( 'admin_init', 'fitcash_init_method');
 add_action( 'admin_menu', 'fitcash_plugin_add_option_page');
 add_action( 'admin_head', 'fitcash_plugin_load_header_tags');
 add_filter( 'cron_schedules', 'fitcash_more_reccurences');
-add_action( 'scheduled_import_article_hook', 'fitcash_import_articles' );
+add_action( 'scheduled_import_articles_custom_hook', 'fitcash_import_articles_generic' );
 
 
+
+$arr_fitcash_host_blog_type = array(
+         0 => 'script',
+         1 => 'no script'
+     );
 
 
 
@@ -75,9 +79,11 @@ function fitcash_plugin_activation()
 ////////////////////////////////////////////////////////////////////////////////
 function fitcash_plugin_deactivation() 
 {
-  wp_clear_scheduled_hook('scheduled_import_article_hook');
+  wp_clear_scheduled_hook('scheduled_import_articles_custom_hook');
 
   delete_option('fitcash_import_posts');
+
+  return;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -85,9 +91,10 @@ function fitcash_plugin_deactivation()
 ////////////////////////////////////////////////////////////////////////////////
 function fitcash_plugin_add_option_page()
 {
-  add_menu_page( 'Fitcash', 'Fitcash', 5, __FILE__, 'fitcash_plugin_create_option_page');
-  add_submenu_page(__FILE__, 'About', 'About', 5, 'sub-page', 'display_fit365Online_plugin_about');
-  add_submenu_page(__FILE__, 'JV Profit Center', 'JV Profit Center', 5, 'sub-page2', 'javascript_to_redirect_to_jvprofitcenter');
+  add_menu_page( 'Fitcash Plugin Options', 'Fitcash', array( 'edit_posts', 'publish_posts', 'manage_options'), 'fitcash-option-page', 'fitcash_plugin_create_option_page', 'http://www.jonbensonforum.com/favicon.ico');
+  add_submenu_page( 'fitcash-option-page', 'Host Blog Entries', 'Host Blogs',       array( 'edit_posts', 'publish_posts', 'manage_options'), 'fitcash-host-blog-page', 'fitcash_plugin_create_host_blog_option_page');
+  add_submenu_page( 'fitcash-option-page', 'About',             'About',            5, 'fitcash-about', 'fitcash_display_fit365Online_plugin_about');
+  add_submenu_page( 'fitcash-option-page', 'JV Profit Center',  'JV Profit Center', 5, 'fitcash-sub-page', 'fitcash_javascript_to_redirect_to_jvprofitcenter');
 //  add_options_page('JBF Import Posts', 'Import fit365Online', 8, __FILE__, 'jbf_create_option_page');
 }
 
@@ -185,10 +192,10 @@ function fitcash_migrate_old_options()
        '2' => 'jv_profit_center_id',
        '3' => 'import_from_feed365Online_under_this_category',
        '4' => 'disclaimer_prefix_for_fit365_online',
-       '12' => 'fit365online_number_of_article_for_first_import',
-       '13' => 'fit365online_number_of_article_for_subsequent_import',
-       '14' => 'fit365online_import_schedule',
-       '15' => 'fit365online_import_as_option'
+       '14' => 'fit365online_number_of_article_for_first_import',
+       '15' => 'fit365online_number_of_article_for_subsequent_import',
+       '16' => 'fit365online_import_schedule',
+       '17' => 'fit365online_import_as_option'
        );
 
   $new_fields = array(
@@ -204,10 +211,12 @@ function fitcash_migrate_old_options()
        '9' => 'fitcash_text_vars',
        '10' => 'fitcash_num_text_vars',
        '11' => 'fitcash_text_variable',
-       '12' => 'fitcash_count_post_first_import',
-       '13' => 'fitcash_count_post_next_imports',
-       '14' => 'fitcash_import_schedule',
-       '15' => 'fitcash_publish_option'
+       '12' => 'fitcash_host_blogs',
+       '13' => 'fitcash_host_blog',
+       '14' => 'fitcash_count_post_first_import',
+       '15' => 'fitcash_count_post_next_imports',
+       '16' => 'fitcash_import_schedule',
+       '17' => 'fitcash_publish_option'
        );
 
   foreach($old_fields as $index=>$field) 
@@ -253,6 +262,13 @@ function fitcash_set_option_defaults()
        'fitcash_text_vars'                => 'on',
        'fitcash_num_text_vars'            => 26,
        'fitcash_text_variable'            => array(),
+       'fitcash_host_blogs'               => array( 
+                 '0' => array( 'url' => 'http://fit365online.com', 
+                               'type' => 0, 
+                               'script' => 'rss_aff_for_jvpc.php', 
+                               'params' => array( 'userid' => $fitcash_jv_profit_center_id ) ) 
+                 ),
+       'fitcash_host_blog'                => 0,
        'fitcash_count_post_first_import'  => 1,
        'fitcash_count_post_next_imports'  => 1,
        'fitcash_import_schedule'          => 'daily',
@@ -340,12 +356,47 @@ function fitcash_set_option_defaults()
 
 
 
+////////////////////////////////////////////////////////////////////////////////
+// print plugin host blog option page and check post data
+////////////////////////////////////////////////////////////////////////////////
+function fitcash_plugin_create_host_blog_option_page()
+{
+  if ( $_POST['fitcash_add_parameters_btn'] )
+  {
+    fitcash_add_parameter();
+  }
+
+  if ( $_POST['fitcash_delete_host_blog_btn'] )
+  {
+    fitcash_delete_host_blog();
+  }
+
+  if ( $_POST['fitcash_add_host_blog_btn'] )
+  {
+    fitcash_add_host_blog();
+  }
+
+  if ( $_POST['fitcash_update_options_btn'] )
+  {
+    fitcash_save_plugin_hb_options();
+
+    echo '<div id="message" class="updated fade">';
+    echo '<strong>Plugin Settings saved !!!</strong></div>';
+  }
+
+  fitcash_plugin_print_host_blog_option_page();
+
+  return;
+}
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // print plugin option page and check post data
 ////////////////////////////////////////////////////////////////////////////////
 function fitcash_plugin_create_option_page()
 {
+  fitcash_set_option_defaults();
+  fitcash_migrate_old_options();
   if ( $_POST['fitcash_add_cat_btn'] )
   {
     fitcash_add_category();
@@ -356,13 +407,11 @@ function fitcash_plugin_create_option_page()
     fitcash_save_plugin_options();
 
     echo '<div id="message" class="updated fade">';
-    echo '<strong>Plugin Settings saved !!!</strong>.</div>';
+    echo '<strong>Plugin Settings saved !!!</strong></div>';
   }
 
   if ( $_POST['fitcash_import_btn'] )
-  {
-    fitcash_fetch_articles();
-  }
+    fitcash_fetch_articles_generic();
 
   fitcash_check_text_var_btns();
 
@@ -396,12 +445,6 @@ function fitcash_javascript_to_redirect_to_jvprofitcenter()
 window.open('http://www.jvprofitcenter.com/', '_blank', 'toolbar=0,location=0,menubar=0');
 </script>
 <?php
-}
-
-function fitcash_import_articles()
-{
-  $blog_user_for_import= fitcash_get_option('fitcash_import_user_id');
-  fitcash_importArticles( fitcash_get_option('fitcash_import_feed_url'), fitcash_get_option('fitcash_jv_profit_center_id'), $blog_user_for_import, fitcash_get_option('fitcash_count_post_first_import'));
 }
 
 function fitcash_more_reccurences() 

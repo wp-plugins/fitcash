@@ -5,7 +5,7 @@ Plugin Uri: http://jvprofitcenter.com/blog/fitcash
 Tags: import, rss feed, jbf, import posts, import articles, fitcash, affiliate, jon benson, fit365online, affiliate tool
 Requires at least: 2.7
 Tested up to: WP 3.0.1
-Stable tag: 1.2.5
+Stable tag: 1.3.0
 
 
 
@@ -35,6 +35,9 @@ Please post your question in the forum under **[Support forum](http://wordpress.
 
 You must login to wordpress with an administrator user.
 
+= I have added a new Host Blog entry as feed or atom, but the plugin do not finds new posts and do not import posts. =
+
+You have to enter the url of the feed and atom exactly like it appears in the webbrowser, no redirect or fowarding of the url is working!. If you have an wp blog with permalink structure /post-name etc. your atom will be /feed/atom, with no permalink structure it will be ?feed=atom !
 
 == Screenshots ==
 
@@ -81,6 +84,11 @@ the directory of the stable readme.txt, so in this case, `/tags/4.3/screenshot-1
 = 1.2.5 =
 - design enhancements: plugin panel drag&drop boxes; boxes expandable
 - errors fixed
+
+= 1.3.0 =
+- allow_url_fopen problem solved: removed fopen(), replaced with file_getContents()
+- feature added: add other host blogs, import from feeds, atom, or scripts
+- script changes: removed unused functions and added new functions
 
 `<?php code(); // goes in backticks ?>`
 
