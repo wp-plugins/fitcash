@@ -1,140 +1,223 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Translation of the WordPress plugin FitCash 1.3.0 by Jon Benson.
+# Copyright (C) 2010 Jon Benson
+# This file is distributed under the same license as the FitCash package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 #
-#: fitcash.php:14 fitcash.php:15 fitcash.php:20 fitcash.php:50 fitcash.php:217
-#: fitcash.php:225 fitcash-option-page.php:54 fitcash-option-page.php:98
-#: fitcash-option-page.php:114 fitcash-option-page.php:130
-#: fitcash-option-page.php:147 fitcash-option-page.php:161
-#: fitcash-functions.php:192 fitcash-functions.php:193
-#: fitcash-functions.php:211 fitcash-functions.php:216
-#: fitcash-functions.php:234 fitcash-functions.php:236
-#: fitcash-functions.php:265 fitcash-functions.php:309
-#: fitcash-functions.php:352
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-08-29 17:42+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Project-Id-Version: FitCash 1.3.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/fitcash\n"
+"POT-Creation-Date: 2010-10-02 16:52+0000\n"
+"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Christian Gnoth <support@it-gnoth.de>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: fitcash.php:378
-msgid "Once Weekly"
+#: fitcash-functions.php:15
+msgid "This entry can not be deleted !!!"
 msgstr ""
 
-#: fitcash.php:379
-msgid "Once Monthly"
+#: fitcash-functions.php:27
+msgid "Host Blog Entry deleted !!!"
 msgstr ""
 
-#: fitcash-option-page.php:24
+#: fitcash-functions.php:64
+msgid "Host Blog Entry added !!!"
+msgstr ""
+
+#: fitcash-functions.php:84
+msgid "This entry can not be changed !!!"
+msgstr ""
+
+#: fitcash-functions.php:99
+msgid "Parameter To Host Blog Entry added !!!"
+msgstr ""
+
+#: fitcash-functions.php:210
+msgid "Successfully imported from "
+msgstr ""
+
+#: fitcash-functions.php:210
+msgid ", but didn't found any new posts."
+msgstr ""
+
+#: fitcash-functions.php:215
+msgid "Successfully imported "
+msgstr ""
+
+#: fitcash-functions.php:215
+msgid " posts from "
+msgstr ""
+
+#: fitcash-functions.php:221
+msgid ""
+"Error: Please fill the text fields for the default Header/Footer Text and/or "
+"Spinning Header/Footer Texts !"
+msgstr ""
+
+#: fitcash-functions.php:386
+msgid "Category added !!!"
+msgstr ""
+
+#: fitcash-functions.php:391
+msgid "Category Name missing !!!"
+msgstr ""
+
+#: fitcash-option-page.php:31
 msgid "Daily"
 msgstr ""
 
-#: fitcash-option-page.php:25
+#: fitcash-option-page.php:32
 msgid "Weekly"
 msgstr ""
 
-#: fitcash-option-page.php:26
+#: fitcash-option-page.php:33
 msgid "Monthly"
 msgstr ""
 
-#: fitcash-option-page.php:30
+#: fitcash-option-page.php:37
 msgid "Publish Immediately (Best Option)"
 msgstr ""
 
-#: fitcash-option-page.php:46
-msgid "  <h2>FitCash - Plugin Settings</h2>"
+#: fitcash-option-page.php:38
+msgid "Save As Drafts"
 msgstr ""
 
-#: fitcash-option-page.php:49
-msgid "    <b>Welcome to Jon Benson's WP Tool!</b><br />"
-msgstr ""
-
-#: fitcash-option-page.php:50
+#: fitcash-option-page.php:69
 msgid ""
 "This free plugin allows you to import articles from Jon Benson's Fitness and "
 "nutrition blog under <a class=\"link-extern\" href=\"http://www."
 "jonbensonfitness.com\" target=\"_blank\" tilte=\"Jon Bensons Fitness"
 "\">http://www.jonbensonfitness.com</a>, complete <b>with your affiliate "
-"links</b>.This provides you with automatic content that can also earn you "
+"links</b>. This provides you with automatic content that can also earn you "
 "commissions on all of Jon Benson's Clickbank Products."
 msgstr ""
 
-#: fitcash-option-page.php:158
-msgid "Add Category"
+#: fitcash-option-page.php:70
+msgid ""
+"You can also add content from other sources - add a new Host Blog Entry and "
+"get your content in regular intervalls from there."
 msgstr ""
 
-#: fitcash-option-page.php:182
-msgid "Save Changes"
+#: fitcash-option-page.php:91 fitcash-option-page.php:198
+#: fitcash-option-page.php:235 fitcash-option-page.php:288
+#: fitcash-option-page.php:304 fitcash-option-page.php:357
+#: fitcash-option-page.php:442 fitcash-option-page.php:458
+msgid "Zum umschalten klicken"
 msgstr ""
 
-#: fitcash-option-page.php:184
-msgid "Import From JonBensonFitness.com"
+#: fitcash-option-page.php:92
+msgid "Settings"
 msgstr ""
 
-#: fitcash-option-page.php:197
-msgid "\">Optional Header Text "
+#: fitcash-option-page.php:105
+msgid "How Frequently Do You Want New Articles Imported"
 msgstr ""
 
-#: fitcash-option-page.php:222
+#: fitcash-option-page.php:121
+msgid "Set New Articles On Import To... "
+msgstr ""
+
+#: fitcash-option-page.php:137
+msgid "Select the Categories For Imported Articles"
+msgstr ""
+
+#: fitcash-option-page.php:157
+msgid "None"
+msgstr ""
+
+#: fitcash-option-page.php:169
+msgid "Number Of Articles For First Import:"
+msgstr ""
+
+#: fitcash-option-page.php:199
+msgid "Spinning Text - Create Unique Content for the Web !"
+msgstr ""
+
+#: fitcash-option-page.php:202
+msgid ""
+"With spinning text you can create unique content on your blog posts that "
+"will make each article imported more search engine-friendly. The headers and "
+"footers below will be automatically added at random to each imported article."
+msgstr ""
+
+#: fitcash-option-page.php:236
 msgid "Randomly Changed Text Variables - Create Unique Content for the Web !"
 msgstr ""
 
-#: fitcash-option-page.php:225
+#: fitcash-option-page.php:239
 msgid ""
-"With this feature you can add variables to your header and footer text "
-"versions, which are changed randomly."
-msgstr ""
-
-#: fitcash-option-page.php:226
-msgid ""
-"They can be used like \"... some text {variable 1 name} some more text ...\" "
-"- then the \"variable 1 name\" will be replaced with the values you have "
-"set. Set the values comma seperated in {} - <b>please take care that there "
-"are no spaces between the commas and brackets like {},{},{},...</b>."
+"With this feature you can create your own dynamic variables, which will be "
+"automatically added to your headers and footers and changed randomly for "
+"even greater search engine optimization."
 msgstr ""
 
 #: fitcash-option-page.php:240
+msgid ""
+"They can be used like \"... some text {variable 1 name} some more text ...\" "
+"- then the \"variable 1 name\" will be replaced with the values you have "
+"set. Set the values comma separated in {} - <b>please take care that there "
+"are no spaces between the commas and brackets like {},{},{},....</b>."
+msgstr ""
+
+#: fitcash-option-page.php:254
 msgid "Add New Text Variable"
 msgstr ""
 
-#: fitcash-functions.php:135
-msgid "Category added !!!"
+#: fitcash-option-page.php:264
+msgid "Delete Variable"
 msgstr ""
 
-#: fitcash-functions.php:140
-msgid "Category Name missing !!!"
+#: fitcash-option-page.php:358
+msgid "Hostblog"
 msgstr ""
 
-#: fitcash-functions.php:166
-msgid "Successfully imported from "
-msgstr ""
-
-#: fitcash-functions.php:166
-msgid ", but didn't found any new posts."
-msgstr ""
-
-#: fitcash-functions.php:171
-msgid "Successfully imported "
-msgstr ""
-
-#: fitcash-functions.php:171
-msgid " posts from "
-msgstr ""
-
-#: fitcash-functions.php:171
-msgid " !!!</strong></div>"
-msgstr ""
-
-#: fitcash-functions.php:213
+#: fitcash-option-page.php:362
 msgid ""
-"Invalid JV Profit Center affiliate ID. Please re-enter or create a valid ID "
-"at http://www.jvprofitcenter.com."
+"You can add different Host Blogs from which you want import your content. "
+"The content has to be in Atom or RSS format."
+msgstr ""
+
+#: fitcash-option-page.php:363
+msgid ""
+"You can enter the url of a script which process different parameters like "
+"userid, number of posts to import etc. or the url of a feed or atom."
+msgstr ""
+
+#: fitcash-option-page.php:366
+msgid "Select the Host Blog from which you want import articles"
+msgstr ""
+
+#: fitcash-option-page.php:401
+msgid "Add Parameters To Host Blog Entry"
+msgstr ""
+
+#: fitcash-option-page.php:409
+msgid "Create New Host Blog Entry"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "FitCash"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://jvprofitcenter.com/blog/fitcash"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Import posts/articles from Jon Benson Fitness&copy; Host Blog to your blog "
+"via last rss feed. WP Cron settings for automatical import in regular "
+"intervals."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Jon Benson"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://jonbensonfitness.com"
 msgstr ""

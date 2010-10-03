@@ -5,7 +5,7 @@ Plugin Uri: http://jvprofitcenter.com/blog/fitcash
 Tags: import, rss feed, jbf, import posts, import articles, fitcash, affiliate, jon benson, fit365online, affiliate tool
 Requires at least: 2.7
 Tested up to: WP 3.0.1
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 
 
 
@@ -89,6 +89,9 @@ the directory of the stable readme.txt, so in this case, `/tags/4.3/screenshot-1
 - allow_url_fopen problem solved: removed fopen(), replaced with file_getContents()
 - feature added: add other host blogs, import from feeds, atom, or scripts
 - script changes: removed unused functions and added new functions
+
+= 1.3.1 =
+- error fixed: wp do not supports capabilities as array
 
 `<?php code(); // goes in backticks ?>`
 

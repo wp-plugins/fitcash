@@ -3,7 +3,7 @@
 Plugin Name: FitCash 
 Plugin URI: http://jvprofitcenter.com/blog/fitcash
 Description: Import posts/articles from Jon Benson Fitness&copy; Host Blog to your blog via last rss feed. WP Cron settings for automatical import in regular intervals.
-Version: 1.3.0
+Version: 1.3.1
 Author: Jon Benson
 Author URI: http://jonbensonfitness.com
 License: GPL2
@@ -91,8 +91,8 @@ function fitcash_plugin_deactivation()
 ////////////////////////////////////////////////////////////////////////////////
 function fitcash_plugin_add_option_page()
 {
-  add_menu_page( 'Fitcash Plugin Options', 'Fitcash', array( 'edit_posts', 'publish_posts', 'manage_options'), 'fitcash-option-page', 'fitcash_plugin_create_option_page', 'http://www.jonbensonforum.com/favicon.ico');
-  add_submenu_page( 'fitcash-option-page', 'Host Blog Entries', 'Host Blogs',       array( 'edit_posts', 'publish_posts', 'manage_options'), 'fitcash-host-blog-page', 'fitcash_plugin_create_host_blog_option_page');
+  add_menu_page( 'Fitcash Plugin Options', 'Fitcash', 8, 'fitcash-option-page', 'fitcash_plugin_create_option_page', 'http://www.jonbensonforum.com/favicon.ico');
+  add_submenu_page( 'fitcash-option-page', 'Host Blog Entries', 'Host Blogs',       8, 'fitcash-host-blog-page', 'fitcash_plugin_create_host_blog_option_page');
   add_submenu_page( 'fitcash-option-page', 'About',             'About',            5, 'fitcash-about', 'fitcash_display_fit365Online_plugin_about');
   add_submenu_page( 'fitcash-option-page', 'JV Profit Center',  'JV Profit Center', 5, 'fitcash-sub-page', 'fitcash_javascript_to_redirect_to_jvprofitcenter');
 //  add_options_page('JBF Import Posts', 'Import fit365Online', 8, __FILE__, 'jbf_create_option_page');
