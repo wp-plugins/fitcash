@@ -265,22 +265,31 @@ function fitcash_save_plugin_options()
 
   $fitcash_host_blogs       = fitcash_get_option('fitcash_host_blogs');
   $fitcash_host_blogs[0]['params']['userid'] = $_POST['fitcash_jv_profit_center_id'];
+  $fitcash_import_user_id           = fitcash_get_option('fitcash_import_user_id');
+  $fitcash_import_feed_url          = fitcash_get_option('fitcash_import_feed_url');
+  $fitcash_spinning_last_number     = fitcash_get_option('fitcash_spinning_last_number');
+  $fitcash_text_variable            = fitcash_get_option('fitcash_text_variable');
+  $fitcash_host_blog                = fitcash_get_option('fitcash_host_blog');
+  $fitcash_count_post_next_imports  = fitcash_get_option('fitcash_count_post_next_imports');
+  $fitcash_spinning_last_number     = fitcash_get_option('fitcash_spinning_last_number');
 
   $options = array(
-//       'fitcash_import_user_id'           => $_POST['fitcash_import_user_id'],
-//       'fitcash_import_feed_url'          => $_POST['fitcash_import_feed_url'],
+       'fitcash_import_user_id'           => $fitcash_import_user_id,
+       'fitcash_import_feed_url'          => $fitcash_import_feed_url,
        'fitcash_jv_profit_center_id'      => $_POST['fitcash_jv_profit_center_id'],
        'fitcash_import_cats'              => $_POST['fitcash_import_cats_select'],
        'fitcash_post_header_text'         => $_POST['fitcash_post_header_text'],
        'fitcash_post_footer_text'         => $_POST['fitcash_post_footer_text'],
        'fitcash_spinning_header_text'         => $fitcash_spinning_header_text,
        'fitcash_spinning_footer_text'         => $fitcash_spinning_footer_text,
+       'fitcash_spinning_last_number'         => $fitcash_spinning_last_number,
        'fitcash_text_vars'            => $_POST['fitcash_text_vars'],
+       'fitcash_text_variable'            => $fitcash_text_variable,
        'fitcash_num_text_vars'            => $fitcash_num_text_vars,
        'fitcash_host_blogs'               => $fitcash_host_blogs,
-       'fitcash_host_blog'                => $_POST['fitcash_host_blogs'],
+       'fitcash_host_blog'                => $fitcash_host_blog,
        'fitcash_count_post_first_import'  => intval($_POST['fitcash_count_post_first_import']),
-//       'fitcash_count_post_next_imports'  => $_POST['fitcash_count_post_nect_import'],
+       'fitcash_count_post_next_imports'  => $fitcash_count_post_nect_import,
        'fitcash_import_schedule'          => $_POST['fitcash_import_schedule'],
        'fitcash_publish_option'           => $_POST['fitcash_publish_option']
         );
