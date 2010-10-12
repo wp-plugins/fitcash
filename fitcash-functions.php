@@ -460,6 +460,8 @@ function fitcash_custom_htmlspecialchars_decode($str, $options="")
 
 function fitcash_process_content($url, $no_of_article_to_be_imported)
 {
+  global $wpdb;
+
   $rss = new fitcash_lastRSS();  
   $rss_content = $rss->Get($url);
   $items = $rss_content['items'];
