@@ -5,7 +5,7 @@ Plugin Uri: http://jvprofitcenter.com/blog/fitcash
 Tags: import, rss feed, jbf, import posts, import articles, fitcash, affiliate, jon benson, fit365online, affiliate tool
 Requires at least: 2.7
 Tested up to: WP 3.0.1
-Stable tag: 1.3.3
+Stable tag: 1.3.4
 
 
 
