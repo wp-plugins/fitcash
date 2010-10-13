@@ -3,7 +3,7 @@
 Plugin Name: FitCash 
 Plugin URI: http://jvprofitcenter.com/blog/fitcash
 Description: Import posts/articles from Jon Benson Fitness&copy; Host Blog to your blog via last rss feed. WP Cron settings for automatical import in regular intervals.
-Version: 1.3.3
+Version: 1.3.4
 Author: Jon Benson
 Author URI: http://jonbensonfitness.com
 License: GPL2
@@ -181,7 +181,7 @@ function fitcash_migrate_old_options()
   global $wpdb;
 
   //  check for a old Option
-  if (get_option('fit365online_import_schedule') === false) 
+  if ( (get_option('fit365online_import_schedule') === false) ) 
   {
     return;
   }
@@ -192,10 +192,10 @@ function fitcash_migrate_old_options()
        '2' => 'jv_profit_center_id',
        '3' => 'import_from_feed365Online_under_this_category',
        '4' => 'disclaimer_prefix_for_fit365_online',
-       '14' => 'fit365online_number_of_article_for_first_import',
-       '15' => 'fit365online_number_of_article_for_subsequent_import',
-       '16' => 'fit365online_import_schedule',
-       '17' => 'fit365online_import_as_option'
+       '15' => 'fit365online_number_of_article_for_first_import',
+       '16' => 'fit365online_number_of_article_for_subsequent_import',
+       '17' => 'fit365online_import_schedule',
+       '18' => 'fit365online_import_as_option'
        );
 
   $new_fields = array(
@@ -213,10 +213,11 @@ function fitcash_migrate_old_options()
        '11' => 'fitcash_text_variable',
        '12' => 'fitcash_host_blogs',
        '13' => 'fitcash_host_blog',
-       '14' => 'fitcash_count_post_first_import',
-       '15' => 'fitcash_count_post_next_imports',
-       '16' => 'fitcash_import_schedule',
-       '17' => 'fitcash_publish_option'
+       '14' => 'fitcash_plugin_version',
+       '15' => 'fitcash_count_post_first_import',
+       '16' => 'fitcash_count_post_next_imports',
+       '17' => 'fitcash_import_schedule',
+       '18' => 'fitcash_publish_option'
        );
 
   foreach($old_fields as $index=>$field) 
@@ -260,7 +261,7 @@ function fitcash_set_option_defaults()
        'fitcash_spinning_footer_text'     => array(),
        'fitcash_spinning_last_number'     => 0,
        'fitcash_text_vars'                => 'on',
-       'fitcash_num_text_vars'            => 26,
+       'fitcash_num_text_vars'            => 32,
        'fitcash_text_variable'            => array(),
        'fitcash_host_blogs'               => array( 
                  '0' => array( 'url' => 'http://fit365online.com', 
@@ -272,7 +273,8 @@ function fitcash_set_option_defaults()
        'fitcash_count_post_first_import'  => 1,
        'fitcash_count_post_next_imports'  => 1,
        'fitcash_import_schedule'          => 'daily',
-       'fitcash_publish_option'           => 'publish'
+       'fitcash_publish_option'           => 'publish',
+       'fitcash_plugin_version'           => '1.3.4'
         );
 
   //  set default header and footer vars

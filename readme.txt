@@ -99,5 +99,8 @@ the directory of the stable readme.txt, so in this case, `/tags/4.3/screenshot-1
 = 1.3.3 =
 - error fixed: fitcash_process_content
 
+= 1.3.4 = 
+- error fixed: count of variables in default options set to 32 instead of 26 
+
 `<?php code(); // goes in backticks ?>`
 

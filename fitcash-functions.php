@@ -197,9 +197,7 @@ function fitcash_fetch_articles_generic()
     $type       = $fitcash_host_blogs[$blog_entry]['type'];
 
     $no_of_imported_posts = fitcash_process_content($url, $count_posts);
-    
-    $fitcash_host_blogs = fitcash_get_option('fitcash_host_blogs');
-    $blog_entry = fitcash_get_option('fitcash_host_blog');
+
     $url_display = str_replace( 'http://', '', $fitcash_host_blogs[$blog_entry]['url']);
     if ( !(strpos( $url_display, '/') === false) )
       $url_display = substr( $url_display, 0, strpos( $url_display, '/'));
