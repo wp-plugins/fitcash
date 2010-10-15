@@ -3,7 +3,7 @@
 Plugin Name: FitCash 
 Plugin URI: http://jvprofitcenter.com/blog/fitcash
 Description: Import posts/articles from Jon Benson Fitness&copy; Host Blog to your blog via last rss feed. WP Cron settings for automatical import in regular intervals.
-Version: 1.3.4
+Version: 1.3.5
 Author: Jon Benson
 Author URI: http://jonbensonfitness.com
 License: GPL2
@@ -397,8 +397,6 @@ function fitcash_plugin_create_host_blog_option_page()
 ////////////////////////////////////////////////////////////////////////////////
 function fitcash_plugin_create_option_page()
 {
-  fitcash_set_option_defaults();
-  fitcash_migrate_old_options();
   if ( $_POST['fitcash_add_cat_btn'] )
   {
     fitcash_add_category();
