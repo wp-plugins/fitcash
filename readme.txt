@@ -5,7 +5,7 @@ Plugin Uri: http://jvprofitcenter.com/blog/fitcash
 Tags: import, rss feed, jbf, import posts, import articles, fitcash, affiliate, jon benson, fit365online, affiliate tool
 Requires at least: 2.7
 Tested up to: WP 3.0.1
-Stable tag: 1.3.5
+Stable tag: 1.3.6
 
 
 
@@ -102,8 +102,11 @@ the directory of the stable readme.txt, so in this case, `/tags/4.3/screenshot-1
 = 1.3.4 = 
 - error fixed: count of variables in default options set to 32 instead of 26 
 
-= 1.3.5 = 
+= 1.3.5 =
 - minor error fixed
+
+= 1.3.6 =
+- version problem in svn repository fixed
 
 `<?php code(); // goes in backticks ?>`
 
